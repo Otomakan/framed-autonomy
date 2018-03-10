@@ -1,11 +1,36 @@
-# framed-autonomy
-A dynamic website with only static pages
+# Framed Autonomy 🐼
 
-This is a simpy gulp based static website generator. 
+## What is Framed?
+Framed is a minimalistic(ish) static website generator written in Node and relying on gulp as a build system. The generated website is intended to feel like a dynamic site. The page transitions doesn't rely on third party librairies so the JS is super minimalistic. It relies on `document.write()` so if that's a no no for you please suggest some other methods!
 
-Simply install and run gulp. Gulp will take care of generating the site as your file changes and running it in a local server. 
+## Why Framed?
+- Minimalistic. Framed is for building quickly fast website 
+- Adaptable. The code is not complicated you have full control over your sass, html and content
+- Dynamic. Framed can be use to 
+- Static. No or minimal hosting costs for the win!
 
-Gulp parses the Javascript and CSS so each page has a unique JS and CSS file associated with it. (Apparently what I'm doing with the CSS is tree shaking but I'm not sure sure, and it's not that complex)
+## Getting Started 🚀
+### Prerequisites 学
+
+All you need is Node and npm installed and your machine. If you don't find out how here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm.
+
+### Setup 造
+
+First clone this repository, then run npm install
+```
+git clone https://github.com/Otomakan/framed-autonomy.git
+cd framed-autonomy
+npm install
+```
+
+## Usage ⽤
+### Build your site
+If all the packages were installed properly all you need to do is go in your command line and type
+```gulp```
+And a browser sync will start a local server on port 3000 and open a window in your favorite browser.
+Gulp has a bunch of watch functions which will update the website when it detects a file change
+
+### Customize it 
 
 Write your page templates in src/content/templates and the content of you page in a JSON format in src/content/contentJSON.
 Gulp will read your template file and replace each ##key## in the template by the key provided in the JSON file. 
