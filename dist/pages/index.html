@@ -1,0 +1,61 @@
+<script type='text/javascript'>let content='<div class='container blue'><h1 class='page-title'>Template Page</h1><div id='blo'></div><h2 class='page-subtitle'>This is the subtitle of the page</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lore</p></div>'if(!document.nav){document.open()async function loadBody(){try{const res=await fetch('./headernav.html') const reader=res.body.getReader() let result=await reader.read() console.log('blo') while(!result.done){document.write((String.fromCharCode.apply(null, new Uint8Array(result.value)))) result=await reader.read();}console.log(content)document.write(content)document.close()}catch(e){console.log(e)}};loadBody().then(()=>{console.log('med')})}</script><!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script type="text/javascript" src='./dist/bundle.js'></script>
+	<link rel="stylesheet" type="text/css" href="./dist/bootstrapped-style.css">
+	<title>My New Project</title>
+</head>
+<body>
+	<nav class='navbar navbar-expand-lg navbar-light'>
+	  <a class='navbar-brand' href='#'><img  src="./dist/assets/images/autonomy_logo.png"> </a>
+	  <hr id='navbar-bar'/>
+
+	  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
+	    <span class='navbar-toggler-icon'></span>
+	  </button>
+	  <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+	    <div class='navbar-nav'>
+	      <a class='nav-item nav-link' href='#%21tab0&q=home'>Home </a>
+	      <a class='nav-item nav-link' href='#solar'>Solar</a>
+	      <a class='nav-item nav-link' href='#monitoring'>Monitoring</a>
+	     </a>
+	    </div>
+	  </div>
+	</nav>
+	 <div class="body-wrapper">
+	 <div id="left-block">
+	  <div id="first-block">
+
+	  	<h2>Evolve to energy independance</h2>
+	  	<div id="first-block-more-info">Learn more here</div>
+	  </div>
+
+ 
+	  <div id="wrapper-second-third">
+		  <div id="second-block"> 
+		  	<div id="second-block-text-area"><h1>Go find empowrement</h1></div></div>
+		  <div id="third-block">
+		  	<div class="mini-title">
+		  		This is the future
+		  	</div>
+		  	<div id="carr-text">
+		  		<div class="carousel"> 
+		  			<div>MMP is here to deliver some awesome stuff for you and your family</div>
+		  			<div>This is the second inspirig thing</div>
+		  		</div>
+		  		
+		  	</div>
+		  </div>
+		</div>
+
+	  </div>
+	  <div id="right-block">
+		  <div id="fourth-block">Fill with some stuff <div class="energy-counter">0</div></div>
+	  </div>
+	  
+	</div>
+
+</body>
+</html>
