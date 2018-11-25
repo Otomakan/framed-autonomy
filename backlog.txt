@@ -1,0 +1,2 @@
+So to limit the loading we only load the content of the 'content' variable present in each template file .
+Now the problem is that we might encounter some issues with double quotes in the javascript.
