@@ -16,8 +16,8 @@ module.exports =  ()=> {
      if(file.contents.slice(0,7).toString('ascii')=="#headme"){
       const pageContent = file.contents.slice(7,file.contents.length).toString()
       const script = loadBodyPrefixer()
-      console.log(script)
-      const header = "<script>var content=\""+ pageContent.toString()+ "\";"+  script+"</script>"      
+      const fetchPolyfill = "@if (Request.Browser.Browser=='IE' || Request.Browser.Browser=='InternetExplorer'){<script src='https://cdn.polyfill.io/v2/polyfill.min.js'></script> <script src='https://npmcdn.com/es6-promise@3.2.1'></script>}"
+      const header = fetchPolyfill+"<script>var content=\""+ pageContent.toString()+ "\";"+  script+"</script>"      
       // file.contents = Buffer.concat([Buffer.from(header,'utf8'), pageContent]);
       file.contents = Buffer.from(header,'utf8')
       console.log(loadBodyPrefixer())

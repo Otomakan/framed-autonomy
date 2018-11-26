@@ -3,29 +3,44 @@ var Transform = require('stream').Transform;
 var through = require('through2');    // npm install --save through2
 const fs = require('fs')
 const loadBodyPrefixer = require('./scriptsToString.js').loadBody
+const sass = require('node-sass')
+
+// Thanks https://codereview.stackexchange.com/questions/179471/find-the-corresponding-closing-parenthesis
 
 module.exports =  ()=> {
+  if(!lol){
+    lol+=1
+  }
+  else
+    var lol =0
    return through.obj(function(file, encoding, cb) {
+     console.log(lol)
      const jsonData = JSON.parse(file.contents.toString('ascii'))
      //We get the location of the file from there we access the templates
+     
      let targetHTMLFile=''
      if(jsonData.template)
-        targetHTMLFile = file.cwd+'/src/templates/'+jsonData.template+'.html'
+        targetHTMLFile = file.cwd+'/src/content/templates/'+jsonData.template+'.html'
      else 
       throw "We need a template target"
-    console.log(targetHTMLFile)
+    
+    
      let htmlContent = fs.readFileSync(targetHTMLFile)
-     htmlContent = htmlContent.toString('ascii')
-     for(let key in jsonData){
+
+     htmlContent = htmlContent.toString('ascii')    
+     let mysass = fs.readFileSync(file.cwd+'/src/styles/bootstrapped-style.scss')
+      mysass = mysass.toString('ascii')
+     let relevantCSS = findCSS(htmlContent, mysass )
+
+      for(let key in jsonData){
         if(key==='template')
           continue
         else{
-          console.log(key + ":" + jsonData[key])
+          // console.log(key + ":" + jsonData[key])
           let regex = new RegExp("##"+key+"##",'g')
           htmlContent = htmlContent.replace(regex,jsonData[key])
         }
      }
-     
      // console.log(typeof htmlContent)
      // if(htmlContent)
      //    htmlContent = Buffer.from(htmlContent,'utf8')
@@ -33,10 +48,63 @@ module.exports =  ()=> {
      if(htmlContent.slice(0,7).toString('ascii')=="#headme"){
         const pageContent = htmlContent.slice(7,htmlContent.length)
         const script = loadBodyPrefixer()
-        const header = "<script>var content=\""+ pageContent.toString()+ "\";"+  script+"</script>"      
+        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
+        
         file.contents = Buffer.from(header,'utf8')
-        console.log(loadBodyPrefixer())
       }
+
+      console.log(file)
      cb(null,file)
   });
 };
+
+//Finds the relevant css for every web page
+function findCSS(htmlFile, sassFile){
+   
+    var mycss = sass.renderSync({
+      data: sassFile
+    })
+    let classes = htmlFile.match(/class=\'(.*?)\'/g)
+     classes = classes.map((tag)=> {
+      let result  =   tag.substring(7,tag.length-1).split(" ").map((sub)=>
+            "."+sub
+          )
+        if(tag.split(" ").length===1){
+          return result
+        }
+        else{
+           result.push(result.reduce((tot,val)=>tot+val))
+           return result
+        }
+        
+      });
+     let ids = htmlFile.match(/id=\'(.*?)\'/g)
+     ids = ids.map((tag)=> 
+        tag.substring(4,tag.length-1)
+     )
+     var dummyarray;
+     mycss = mycss.css.toString('ascii')
+     // console.log(mycss)
+    //  while ((dummyarray = re.exec(mycss)) !== null) {
+    //    console.log(`Found ${dummyarray[0]}. Next starts at ${re.lastIndex}.`);
+    //   // expected output: "Found foo. Next starts at 9."
+    //   // expected output: "Found foo. Next starts at 19."
+    // }
+     let finalCSS = "<style>"
+     let recontainer = ""
+     classes.forEach(group=> {
+        group.forEach( cssClass=> {
+            let re = new RegExp(cssClass+" {(\n|.)*?}",'g')
+            let matches= mycss.match(re)
+            if(matches)
+              matches.forEach((matchedCSS) =>{
+                finalCSS += matchedCSS
+            });
+         });
+     });
+     // console.log(classes)
+     // console.log(ids)
+     // console.log(finalCSS)
+     return finalCSS+"</style>"
+
+}

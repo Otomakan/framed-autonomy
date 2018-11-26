@@ -16,6 +16,8 @@ const util = require('util')
 const templatePrefixer = require('./gulpUtils/templatePrefixer.js')
 const jsonLoader =  require('./gulpUtils/jsonLoader.js')
 const rename = require('gulp-rename')
+const htmlmin = require('gulp-htmlmin');
+
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -77,7 +79,7 @@ gulp.task('clean-css',()=>
   // .pipe(concat('bundle.css'))
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-  .pipe(cleanCSS())
+  // .pipe(cleanCSS())
   .pipe(gulp.dest('./dist/'))
   )
 
@@ -92,17 +94,26 @@ gulp.task('html',()=>
   .pipe(gulp.dest('dist'))
   )
 gulp.task('test',()=>
-  gulp.src('src/pages/*.html')
+  gulp.src('src/content/*.html')
   .pipe(templatePrefixer())
-  .pipe(gulp.dest('dist/pages')
+  .pipe(gulp.dest('dist/content/pages')
 ))
 gulp.task('jsonhtml',()=>
-  gulp.src('src/pages/*.json')
+  gulp.src('src/content/contentJson/*.json')
   .pipe(jsonLoader())
   .pipe(rename({extname:'.html'}))
-  .pipe(gulp.dest('dist/json'))
+  .pipe(gulp.dest('dist/content/pages'))
   )
-
-gulp.task('default',['serve','html','test','compress','clean-css','imagemin'])
+gulp.task('htmlutils',()=>
+  gulp.src('src/content/utils/*.html')
+  .pipe(htmlmin({ collapseWhitespace: true }))
+  .pipe(gulp.dest('dist/content/utils'))
+  )
+gulp.task('indexhtml',()=>
+  gulp.src('src/content/*.html')
+  .pipe(gulp.dest('dist/'))
+  )
+// Remember to put imagemin later on in
+gulp.task('default',['serve','html','indexhtml','htmlutils','jsonhtml','compress','clean-css'])
 
 

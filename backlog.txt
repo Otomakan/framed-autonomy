@@ -1,2 +1,7 @@
 So to limit the loading we only load the content of the 'content' variable present in each template file .
 Now the problem is that we might encounter some issues with double quotes in the javascript.
+If there is a problem loding the page with our javascript make sure that it turns into a normal link
+Really have to think harder about the file structure, how to you fetch css or js file dynamically
+For the css, maybe what we can do is generate a file from scss, then append the relevant css to each page. So you parse all the class and ids then prepend them
+Maybe create a really smart program for the css detection. Let the program find the relevant css for each page. Index each declaration, then spits out 
+css files appended to the html and a global css file which only has recurring tags.

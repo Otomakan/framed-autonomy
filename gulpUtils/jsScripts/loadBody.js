@@ -1,7 +1,8 @@
 if(!document.nav){
+
 	document.open();
 	function loadBody(){
-		 fetch('./headernav.html').then(res=>{
+		 fetch('../utils/headernav.html').then(res=>{
 			res.arrayBuffer().then((ab)=>{
 	          	let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  
 	        	document.write(myString);

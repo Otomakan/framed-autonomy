@@ -56,6 +56,7 @@ ready(function(){
         // for(let i =0; i<ab.length; i++){
           let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  // }
           console.log(typeof myString)
+          //Eleminating all the 
           targetDiv.innerHTML += myString.match(/(content=\")([^]+)\"/)[0].replace(/(content=\")/,"").slice(0, -1)
         })
       })
