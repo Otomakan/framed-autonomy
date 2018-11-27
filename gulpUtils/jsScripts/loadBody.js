@@ -1,4 +1,4 @@
-if(!document.nav){
+if(!document.body){
 
 	document.open();
 	function loadBody(){

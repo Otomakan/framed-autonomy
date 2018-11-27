@@ -4,4 +4,15 @@ If there is a problem loding the page with our javascript make sure that it turn
 Really have to think harder about the file structure, how to you fetch css or js file dynamically
 For the css, maybe what we can do is generate a file from scss, then append the relevant css to each page. So you parse all the class and ids then prepend them
 Maybe create a really smart program for the css detection. Let the program find the relevant css for each page. Index each declaration, then spits out 
+Gulp might be too limited to create such a program because it deals with each file one by one
 css files appended to the html and a global css file which only has recurring tags.
+You forgot something with the css, you got to append it to the ajax calls. Wait no maybe you did...
+
+
+For the navigation think about how to handle the back button, I am thinking that it would be cool to keep all the history
+in FIFO queue. We detect the last page and load it on top of our current one.
+
+
+have a single element id ='body-wrapper' so we don't have to realod the navbar every time. The default behavior of ajax
+should be to modify that body-wrapper
+Find a smart way to remove the double quotes from index.html

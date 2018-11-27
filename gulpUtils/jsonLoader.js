@@ -4,17 +4,13 @@ var through = require('through2');    // npm install --save through2
 const fs = require('fs')
 const loadBodyPrefixer = require('./scriptsToString.js').loadBody
 const sass = require('node-sass')
+const htmlminify = require('html-minifier').minify;
 
 // Thanks https://codereview.stackexchange.com/questions/179471/find-the-corresponding-closing-parenthesis
 
 module.exports =  ()=> {
-  if(!lol){
-    lol+=1
-  }
-  else
-    var lol =0
    return through.obj(function(file, encoding, cb) {
-     console.log(lol)
+
      const jsonData = JSON.parse(file.contents.toString('ascii'))
      //We get the location of the file from there we access the templates
      
@@ -27,7 +23,9 @@ module.exports =  ()=> {
     
      let htmlContent = fs.readFileSync(targetHTMLFile)
 
-     htmlContent = htmlContent.toString('ascii')    
+     htmlContent = htmlContent.toString('ascii')
+     htmlContent = htmlminify(htmlContent).replace(/\"/g,"\'")
+     console.log(htmlContent)
      let mysass = fs.readFileSync(file.cwd+'/src/styles/bootstrapped-style.scss')
       mysass = mysass.toString('ascii')
      let relevantCSS = findCSS(htmlContent, mysass )
@@ -45,6 +43,9 @@ module.exports =  ()=> {
      // if(htmlContent)
      //    htmlContent = Buffer.from(htmlContent,'utf8')
      //We check if the first seven characters are "headme"
+    //Maybe to this check in a header Loader function and depending on the head, change the header to load
+    //Eg if you need custom scripts, maybe have in the template.html the name of the header to load
+    // Actaully maybe not useful having those scripts because we have the custom scripts parsed with our js attacher
      if(htmlContent.slice(0,7).toString('ascii')=="#headme"){
         const pageContent = htmlContent.slice(7,htmlContent.length)
         const script = loadBodyPrefixer()
@@ -64,7 +65,9 @@ function findCSS(htmlFile, sassFile){
     var mycss = sass.renderSync({
       data: sassFile
     })
+    console.log(typeof htmlFile)
     let classes = htmlFile.match(/class=\'(.*?)\'/g)
+     if(classes)
      classes = classes.map((tag)=> {
       let result  =   tag.substring(7,tag.length-1).split(" ").map((sub)=>
             "."+sub
@@ -92,7 +95,8 @@ function findCSS(htmlFile, sassFile){
     // }
      let finalCSS = "<style>"
      let recontainer = ""
-     classes.forEach(group=> {
+     if(classes)
+      classes.forEach(group=> {
         group.forEach( cssClass=> {
             let re = new RegExp(cssClass+" {(\n|.)*?}",'g')
             let matches= mycss.match(re)

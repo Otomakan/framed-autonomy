@@ -17,14 +17,14 @@ const templatePrefixer = require('./gulpUtils/templatePrefixer.js')
 const jsonLoader =  require('./gulpUtils/jsonLoader.js')
 const rename = require('gulp-rename')
 const htmlmin = require('gulp-htmlmin');
-
+const indexIsSoSpecial = require('./gulpUtils/indexIsSoSpecial')
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
   'ff >= 30',
   'chrome >= 34',
   'safari >= 7',
-  'opera >= 23',
+'opera >= 23',
   'ios >= 7',
   'android >= 4.4',
   'bb >= 10'
@@ -37,15 +37,15 @@ gulp.task('serve', ()=> {
     gulp.watch('src/js/*.js',['compress']).on('change',browserSync.reload)
     gulp.watch('src/styles/*.scss',['clean-css']).on('change',browserSync.reload)
     // gulp.watch('src/js/*.js',['browserify']).on('change',browserSync.reload)
-    gulp.watch('*').on('change',browserSync.reload)
-    gulp.watch('src/pages/*.html',['test']).on('change',browserSync.reload)
-
+    // gulp.watch('*').on('change',browserSync.reload)
+    gulp.watch('src/content/templates/*.html',['test']).on('change',browserSync.reload)
+    gulp.watch('src/content/*.html',['indexhtml']).on('change',browserSync.reload)
 })
 
 
 gulp.task('compress', ()=>
         gulp.src('src/js/*.js')
-        // .pipe(concat('bundle.js'))
+        .pipe(concat('bundle.js'))
         .pipe(babel({
             presets: ["@babel/preset-env"],
         })).on('error', function(e){
@@ -99,18 +99,21 @@ gulp.task('test',()=>
   .pipe(gulp.dest('dist/content/pages')
 ))
 gulp.task('jsonhtml',()=>
-  gulp.src('src/content/contentJson/*.json')
+  gulp.src(['src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**/*.json','src/content/contentJson/**/**/**/*.json'],
+    {base: './src/content/contentJson/'}) 
   .pipe(jsonLoader())
   .pipe(rename({extname:'.html'}))
-  .pipe(gulp.dest('dist/content/pages'))
+  .pipe(gulp.dest('dist/pages'))
   )
 gulp.task('htmlutils',()=>
   gulp.src('src/content/utils/*.html')
   .pipe(htmlmin({ collapseWhitespace: true }))
-  .pipe(gulp.dest('dist/content/utils'))
+  .pipe(gulp.dest('dist/utils'))
   )
 gulp.task('indexhtml',()=>
   gulp.src('src/content/*.html')
+  .pipe(htmlmin({ collapseWhitespace: true }))
+  .pipe(indexIsSoSpecial())
   .pipe(gulp.dest('dist/'))
   )
 // Remember to put imagemin later on in

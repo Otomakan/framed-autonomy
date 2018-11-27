@@ -40,8 +40,9 @@ ready(function(){
       body.classList.add('blue')
 
       document.body.appendChild(newFirstBlock)
-      loadTemplate(newFirstBlock,'./pages/template-page.html')
-
+      loadTemplate(newFirstBlock,'/pages/my-template.html')
+      window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
+      customHistoryFIFO.push(window.location.href)
     }
 
   })
