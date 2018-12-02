@@ -1,14 +1,15 @@
 if(!document.body){
-
-	document.open();
+	console.log(document)
+	console.log(!document.body)
+	// document.open();
 	function loadBody(){
 		 fetch('../utils/headernav.html').then(res=>{
 			res.arrayBuffer().then((ab)=>{
 	          	let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  
-	        	document.write(myString);
-			 	console.log(content);
-				document.write(content);
-				document.close();
+	        	document.body.appendChild(myString);
+			 	// console.log(content);
+				// document.write(content);
+				// document.close();
         	})
 		}).catch(e=>{
 			console.log(e);
