@@ -38,7 +38,7 @@ gulp.task('serve', ()=> {
     gulp.watch('src/styles/*.scss',['clean-css']).on('change',browserSync.reload)
     // gulp.watch('src/js/*.js',['browserify']).on('change',browserSync.reload)
     // gulp.watch('*').on('change',browserSync.reload)
-    gulp.watch('src/content/templates/*.html',['test']).on('change',browserSync.reload)
+    gulp.watch('src/content/templates/*.html',['jsonhtml']).on('change',browserSync.reload)
     gulp.watch('src/content/*.html',['indexhtml']).on('change',browserSync.reload)
 })
 

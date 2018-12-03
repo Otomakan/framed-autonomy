@@ -48,8 +48,8 @@ module.exports =  ()=> {
     // Actaully maybe not useful having those scripts because we have the custom scripts parsed with our js attacher
      if(htmlContent.slice(0,7).toString('ascii')=="#headme"){
         const pageContent = htmlContent.slice(7,htmlContent.length)
-        const script = loadBodyPrefixer()
-        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
+        const script = loadBodyPrefixer().replace(/\s+/g, '')
+        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\s+/g, '').replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
         
         file.contents = Buffer.from(header,'utf8')
       }

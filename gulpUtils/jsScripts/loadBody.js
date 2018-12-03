@@ -1,21 +1,23 @@
 if(!document.body){
 	console.log(document)
 	console.log(!document.body)
-	// document.open();
+	document.open();
+	document.body = document.createElement("body");
 	function loadBody(){
 		 fetch('../utils/headernav.html').then(res=>{
 			res.arrayBuffer().then((ab)=>{
 	          	let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  
-	        	document.body.appendChild(myString);
+				document.body.innerHTML = myString
+				document.body.innerHTML+=content
 			 	// console.log(content);
-				// document.write(content);
-				// document.close();
+				document.write(myString + content);
         	})
 		}).catch(e=>{
 			console.log(e);
 		})
 	}
 	loadBody()
+	document.close();
 }
 else{
 	let scriptTag = document.getElementsByTagName('script');
