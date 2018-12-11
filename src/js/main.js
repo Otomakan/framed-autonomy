@@ -1,51 +1,5 @@
-console.log('hey it looks like it worked! Happy Hacking!')
-var checkthatbody
 
-ready(function(){
-  let body = document.body
-    //Mimics the bootstrap JS to open navBar
-    let buttonNav = document.getElementsByClassName('navbar-toggler')[0]
-    let navBarNav = document.getElementsByClassName('navbar-nav')[0]
-    let contentNav = document.getElementById('navbarNavAltMarkup')
-    let show = false
-    buttonNav.onclick=(()=>{
-        show = !show
 
-        //Check the status of the show variable and add or remove show class accordingly
-        if(show){
-          contentNav.classList.add('show')
-          navBarNav.classList.add('show')
-        }
-        else{
-          contentNav.classList.remove('show')
-          navBarNav.classList.remove('show')
-        }
-    })
-    //Navigation Bar Links
-    // document.
-    //See more first block
-    document.getElementById("first-block-more-info").onclick =()=>{
-      console.log('clock')
-      let firstBlock = document.getElementById('first-block')
-      let newFirstBlock = firstBlock.cloneNode(true)
-      newFirstBlock.style.position = "absolute"
-      newFirstBlock.style.top = 0
-      newFirstBlock.style.height = "80vh"
-      newFirstBlock.style.width = "100vw"
-      newFirstBlock.style.left = 0
-      firstBlock.remove()
-      while (body.firstChild) {
-        body.removeChild(body.firstChild);
-      } 
-      body.classList.add('blue')
-
-      document.body.appendChild(newFirstBlock)
-      loadTemplate(newFirstBlock,'/pages/my-template.html')
-      window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
-      customHistoryFIFO.push(window.location.href)
-    }
-
-  })
 
 //This function is used to load some HTML from targetUrl, 
 // and replace the content of targetDiv with it.

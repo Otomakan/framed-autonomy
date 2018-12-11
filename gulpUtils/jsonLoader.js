@@ -24,8 +24,8 @@ module.exports =  ()=> {
      let htmlContent = fs.readFileSync(targetHTMLFile)
 
      htmlContent = htmlContent.toString('ascii')
-     htmlContent = htmlminify(htmlContent).replace(/\"/g,"\'")
-     console.log(htmlContent)
+     htmlContent = htmlminify(htmlContent).replace(/\"/g,"\'").replace(/\r?\n|\r/g,"")
+     // console.log(htmlContent)
      let mysass = fs.readFileSync(file.cwd+'/src/styles/bootstrapped-style.scss')
       mysass = mysass.toString('ascii')
      let relevantCSS = findCSS(htmlContent, mysass )
@@ -48,13 +48,14 @@ module.exports =  ()=> {
     // Actaully maybe not useful having those scripts because we have the custom scripts parsed with our js attacher
      if(htmlContent.slice(0,7).toString('ascii')=="#headme"){
         const pageContent = htmlContent.slice(7,htmlContent.length)
-        const script = loadBodyPrefixer().replace(/\s+/g, '')
-        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\s+/g, '').replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
+        const script = loadBodyPrefixer()
+        // .replace(/\s+/g, '')
+        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
         
         file.contents = Buffer.from(header,'utf8')
       }
 
-      console.log(file)
+      // console.log(file)
      cb(null,file)
   });
 };
@@ -68,7 +69,7 @@ function findCSS(htmlFile, sassFile){
     console.log(typeof htmlFile)
     let classes = htmlFile.match(/class=\'(.*?)\'/g)
      if(classes)
-     classes = classes.map((tag)=> {
+      classes = classes.map((tag)=> {
       let result  =   tag.substring(7,tag.length-1).split(" ").map((sub)=>
             "."+sub
           )
@@ -82,9 +83,9 @@ function findCSS(htmlFile, sassFile){
         
       });
      let ids = htmlFile.match(/id=\'(.*?)\'/g)
-     ids = ids.map((tag)=> 
-        tag.substring(4,tag.length-1)
-     )
+     if(ids)
+       ids = ids.map((tag)=> tag.substring(4,tag.length-1))
+
      var dummyarray;
      mycss = mycss.css.toString('ascii')
      // console.log(mycss)

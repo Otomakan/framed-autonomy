@@ -3,23 +3,36 @@
 
 @font-face {
   font-family: NexaBold;
-  src: url('./assets/fonts/nexa-bold.otf');
+  src: url('/assets/fonts/nexa-bold.otf');
 }
 @font-face {
   font-family: NexaLight;
-  src: url('./assets/fonts/nexa-light.otf');
+  src: url('/assets/fonts/nexa-light.otf');
 }
 div{
-	white-space: nowrap; 
+	// white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+$blue : #c2dde1;
+$light-blue: #dbeff1;
+$bright-blue: #b6e2e8;
+$blue-purple: #deeaf3;
+$dark-purple: #aeb8d1;
+$purple-grey: #afbed2;
+$grey-one: #dcdcdc;
+$grey-two: #e6e6e6;
+$beige: #f1f1ec;
+
+$padding-top: 70px;
 body{
   min-height: 100%;
 
   min-width: 100%;
   margin:0;
   padding: 0;
+  // padding-top: 56px; 
 }
 .body-wrapper { 
   // display: grid;
@@ -122,7 +135,7 @@ h2{
  	height: 100%;
  	max-width:70%;
  	max-height: 100%;
- 	margin:0;
+  // padding-top: $padding-top;
  	float:left;
  	#first-block{
  		width:70vw;
@@ -130,7 +143,8 @@ h2{
  		max-width:70vw;
  		max-height:80%;
  		margin:0;
- 		background-color: blue;
+    padding-top: $padding-top;
+    background-color:white;
  		transition: width 1s;
  	}
  	#wrapper-second-third{
@@ -143,8 +157,8 @@ h2{
 	 		max-width:40%;
 	 		max-height:20%;
 	 		margin:0;
-	 		background-color: red;
 	 		float: left;
+      background-color: $dark-purple;
 	 	}
 	 	#third-block{
 	 		max-width:60%;
@@ -162,8 +176,9 @@ h2{
  	height:100%;
  	max-width:30%;
  	max-height:100%;
- 	background-color: purple;
+ 	background: url("/assets/images/bbva-cropped.jpeg");
  	margin:0;
+  padding-top: $padding-top;
  	float:left;
  }
 // #first-block {
@@ -180,19 +195,19 @@ h2{
 //   height:1.2em;
 // }
 
-// #firt-block-more-info {
-//   font-family: NexaBold;
-//   box-sizing: border-box;
-//   width:50%;
-//   text-align: center;
-//   margin:auto auto auto 5em;
-//   border-width: medium;
-//   padding: 0.2em;
-//   border-style: solid;
-//   border-color: black;
-//   margin-bottom: 2em;
+#firt-block-more-info {
+  font-family: NexaBold;
+  box-sizing: border-box;
+  width:50%;
+  text-align: center;
+  margin:auto auto auto 5em;
+  border-width: medium;
+  padding: 0.2em;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 2em;
 
-// }
+}
 
 #first-block h2 {
   font-size: 3em;
@@ -262,7 +277,7 @@ span::after {
 
  #third-block { 
   grid-area: third;  
-  background-color: rgb(156, 225, 244);    
+  background-color: $grey-two;    
   	.mini-title {
     	font-family: NexaBold;
 	    font-size: 1em;
@@ -297,8 +312,58 @@ span::after {
   padding-top: 60px;
   background-color: white;
 
-  .page-subtitle{
-    color:#c7d2d8;
+}
+
+.container.template{
+  width:80vw;
+  // position: relative;
+  padding: 80px 0px;
+  // z-index: 100;
+
+
+  .page-title{
+    position: relative;
+    width: 100%;
+
+    .image-container{
+      // position: relative;
+      float:right;
+      width:800px;
+      height:400px;
+      img{
+        // z-index:101
+        width:800px;
+        height: 400px;
+        // background-image:  filter(url('/assets/images/panels.jpg'), blur(20px));; 
+        position:absolute;
+          max-width: 100%;
+        max-height: 100%;
+        top:0px;
+        right:0px;
+
+        // background-repeat: no-repeat;
+        // background-size: cover;
+      
+      }
+  }
+    .title-text{
+      h1,h2{
+        position: absolute;
+        left:50px;
+      }
+      h1{
+        top:25%
+      }
+      .page-subtitle{
+        position: absolute;
+        top:50%;
+      }
+    }
+  }
+  .page-content{
+    width: 100%;
+    margin:50px 0;
+    padding: 30px 90px;
   }
 }
 body.blue{

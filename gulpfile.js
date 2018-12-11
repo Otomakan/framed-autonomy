@@ -38,6 +38,7 @@ gulp.task('serve', ()=> {
     gulp.watch('src/styles/*.scss',['clean-css']).on('change',browserSync.reload)
     // gulp.watch('src/js/*.js',['browserify']).on('change',browserSync.reload)
     // gulp.watch('*').on('change',browserSync.reload)
+    gulp.watch(['src/js/main.js','src/js/history.js','serviceWorkers.js'],['main-bundle']).on('change',browserSync.reload)
     gulp.watch('src/content/templates/*.html',['jsonhtml']).on('change',browserSync.reload)
     gulp.watch('src/content/*.html',['indexhtml']).on('change',browserSync.reload)
 })
@@ -45,6 +46,17 @@ gulp.task('serve', ()=> {
 
 gulp.task('compress', ()=>
         gulp.src('src/js/*.js')
+        // .pipe(concat('bundle.js'))
+        .pipe(babel({
+            presets: ["@babel/preset-env"],
+        })).on('error', function(e){
+            console.log(e);})
+         // .pipe(uglify().on('error', function(e){
+            // console.log(e);}))
+        .pipe(gulp.dest('./dist/js'))
+);
+gulp.task('main-bundle', ()=>
+        gulp.src(['src/js/main.js','src/js/history.js','serviceWorkers.js'])
         .pipe(concat('bundle.js'))
         .pipe(babel({
             presets: ["@babel/preset-env"],
@@ -117,6 +129,6 @@ gulp.task('indexhtml',()=>
   .pipe(gulp.dest('dist/'))
   )
 // Remember to put imagemin later on in
-gulp.task('default',['serve','html','indexhtml','htmlutils','jsonhtml','compress','clean-css'])
+gulp.task('default',['main-bundle','serve','html','indexhtml','htmlutils','jsonhtml','compress','clean-css'])
 
 

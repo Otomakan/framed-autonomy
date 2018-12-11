@@ -10,14 +10,14 @@ if(!document.body){
 				document.body.innerHTML = myString
 				document.body.innerHTML+=content
 			 	// console.log(content);
-				document.write(myString + content);
+				document.write(myString + content)
+				document.close();
         	})
 		}).catch(e=>{
 			console.log(e);
 		})
 	}
 	loadBody()
-	document.close();
 }
 else{
 	let scriptTag = document.getElementsByTagName('script');
