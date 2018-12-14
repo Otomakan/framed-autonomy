@@ -26,6 +26,6 @@ else{
 	console.log(parentTag)
 	const childEl = document.create('div')
 	childEl.innerHTML = content
-	consolelog(childEl)
+	console.log(childEl)
 	parentTag.appendChild(childEl)
 }
