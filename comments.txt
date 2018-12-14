@@ -1,0 +1,11 @@
+When you navigate , there is a weird problem probably has to do with with the customheader. "width=device-width,initial-scale=1,shrink-to-fit=no">"
+How to reproduce: go to homepage click on "Monitoring"
+
+Think about how to approach tablet navigation. Maybe use something like @media only screen 
+and (max-device-height : 768px) 
+and (max-device-width : 1024px)
+Really think in terms of ratios.
+
+
+Sometimes there is a bit of a weird bug in the front page when I close the first block, the div completely disappers instead of going back to the regular index.html display
+

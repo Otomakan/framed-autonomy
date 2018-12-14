@@ -10,7 +10,7 @@ const htmlminify = require('html-minifier').minify;
 
 module.exports =  ()=> {
    return through.obj(function(file, encoding, cb) {
-
+    console.log(file)
      const jsonData = JSON.parse(file.contents.toString('ascii'))
      //We get the location of the file from there we access the templates
      
@@ -66,7 +66,7 @@ function findCSS(htmlFile, sassFile){
     var mycss = sass.renderSync({
       data: sassFile
     })
-    console.log(typeof htmlFile)
+    
     let classes = htmlFile.match(/class=\'(.*?)\'/g)
      if(classes)
       classes = classes.map((tag)=> {

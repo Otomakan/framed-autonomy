@@ -5,19 +5,19 @@ ready(function(){
     let navBarNav = document.getElementsByClassName('navbar-nav')[0]
     let contentNav = document.getElementById('navbarNavAltMarkup')
     let show = false
-    buttonNav.onclick=(()=>{
-        show = !show
+    // buttonNav.onclick=(()=>{
+    //     show = !show
 
-        //Check the status of the show variable and add or remove show class accordingly
-        if(show){
-          contentNav.classList.add('show')
-          navBarNav.classList.add('show')
-        }
-        else{
-          contentNav.classList.remove('show')
-          navBarNav.classList.remove('show')
-        }
-    })
+    //     //Check the status of the show variable and add or remove show class accordingly
+    //     if(show){
+    //       contentNav.classList.add('show')
+    //       navBarNav.classList.add('show')
+    //     }
+    //     else{
+    //       contentNav.classList.remove('show')
+    //       navBarNav.classList.remove('show')
+    //     }
+    // })
     //Navigation Bar Links
     // document.
     //See more first block
@@ -44,6 +44,7 @@ function openFirstBlock(){
       newFirstBlock.style.top = firstBlock.getBoundingClientRect().top +'px'
       newFirstBlock.style.width = firstBlock.offsetWidth +'px'
       newFirstBlock.style.height = firstBlock.offsetHeight +'px'
+      newFirstBlock.style.overflowY = "scroll"
       // "100vw"
       newFirstBlock.style.left = firstBlock.getBoundingClientRect().left +'px'
       newFirstBlock.style.transition =  "all 1s"

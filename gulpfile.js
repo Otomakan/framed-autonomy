@@ -35,11 +35,11 @@ gulp.task('serve', ()=> {
         server: "./dist/"
     });
     gulp.watch('src/js/*.js',['compress']).on('change',browserSync.reload)
-    gulp.watch('src/styles/*.scss',['clean-css']).on('change',browserSync.reload)
+    gulp.watch('src/styles/*.scss',['clean-css','jsonhtml']).on('change',browserSync.reload)
     // gulp.watch('src/js/*.js',['browserify']).on('change',browserSync.reload)
     // gulp.watch('*').on('change',browserSync.reload)
     gulp.watch(['src/js/main.js','src/js/history.js','serviceWorkers.js'],['main-bundle']).on('change',browserSync.reload)
-    gulp.watch('src/content/templates/*.html',['jsonhtml']).on('change',browserSync.reload)
+    gulp.watch(['src/content/templates/*.html','src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**/*.json'],['jsonhtml']).on('change',browserSync.reload)
     gulp.watch('src/content/*.html',['indexhtml']).on('change',browserSync.reload)
 })
 

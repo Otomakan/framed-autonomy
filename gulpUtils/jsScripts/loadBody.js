@@ -4,7 +4,7 @@ if(!document.body){
 	document.open();
 	document.body = document.createElement("body");
 	function loadBody(){
-		 fetch('../utils/headernav.html').then(res=>{
+		 fetch('/utils/headernav.html').then(res=>{
 			res.arrayBuffer().then((ab)=>{
 	          	let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  
 				document.body.innerHTML = myString
