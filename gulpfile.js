@@ -17,7 +17,7 @@ const templatePrefixer = require('./gulpUtils/templatePrefixer.js')
 const jsonLoader =  require('./gulpUtils/jsonLoader.js')
 const rename = require('gulp-rename')
 const htmlmin = require('gulp-htmlmin');
-// const indexIsSoSpecial = require('./gulpUtils/indexIsSoSpecial')
+const indexIsSoSpecial = require('./gulpUtils/indexIsSoSpecial')
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -124,8 +124,7 @@ gulp.task('htmlutils',()=>
   )
 gulp.task('indexhtml',()=>
   gulp.src('src/content/*.html')
-  .pipe(htmlmin({ collapseWhitespace: true }))
-  // .pipe(indexIsSoSpecial())
+  .pipe(indexIsSoSpecial())
   .pipe(gulp.dest('dist/'))
   )
 // Remember to put imagemin later on in

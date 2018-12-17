@@ -1,25 +1,6 @@
 ready(function(){
   let body = document.body
-    //Mimics the bootstrap JS to open navBar
-    let buttonNav = document.getElementsByClassName('navbar-toggler')[0]
-    let navBarNav = document.getElementsByClassName('navbar-nav')[0]
-    let contentNav = document.getElementById('navbarNavAltMarkup')
-    let show = false
-    // buttonNav.onclick=(()=>{
-    //     show = !show
 
-    //     //Check the status of the show variable and add or remove show class accordingly
-    //     if(show){
-    //       contentNav.classList.add('show')
-    //       navBarNav.classList.add('show')
-    //     }
-    //     else{
-    //       contentNav.classList.remove('show')
-    //       navBarNav.classList.remove('show')
-    //     }
-    // })
-    //Navigation Bar Links
-    // document.
     //See more first block
     openFirstBlock()
 
@@ -31,11 +12,16 @@ function openFirstBlock(){
       console.log('clock')
       let firstBlock = document.getElementById('first-block')
       let firstBlockText = firstBlock.childNodes
-        let bodyWrapper = document.getElementsByClassName('body-wrapper')[0]
-      for(var i=0; i<firstBlockText.length; i++) {
+      let bodyWrapper = document.getElementsByClassName('body-wrapper')[0]
+      let closeButton = document.createElement('div')
+      closeButton.classList.add("close-button")
 
-      firstBlockText[i].style.transition = "opacity 0.3s"  
+      
+      for(var i=0; i<firstBlockText.length; i++) {
+            if(firstBlockText[i].nodeName!="#text"){
+            firstBlockText[i].style.transition = "opacity 0.3s"  
              firstBlockText[i].style.opacity = 0
+           }
       }
        let newFirstBlock = firstBlock.cloneNode(true)
       newFirstBlock.innerHTML = ""
@@ -50,12 +36,17 @@ function openFirstBlock(){
       newFirstBlock.style.transition =  "all 1s"
       newFirstBlock.style.backgroundColor = "white"
        loadTemplate(newFirstBlock,'/pages/my-template.html')
-      
+
+      closeButton.onclick = function(){
+        console.log("CLICK")
+      }
+      newFirstBlock.appendChild(closeButton)
       let newFirstBlockText  = newFirstBlock.childNodes
       for(var i=0; i<newFirstBlockText.length; i++) {
             newFirstBlockText[i].style.opacity = 0
             // newFirstBlockText[i].style.transition = "opacity 0.3s"  
       }
+
       window.setTimeout(()=>{
 
         document.body.appendChild(newFirstBlock)
@@ -70,26 +61,35 @@ function openFirstBlock(){
         newFirstBlock.style.left = 3+"vw"
 
         firstBlock.style.opacity = 0
-      closeFirstBlock(bodyWrapper)
-      },350)
+        closeFirstBlock(bodyWrapper)
+
+        closeFirstBlock(document.getElementsByClassName('close-button')[0])
+            },350)
      setTimeout(()=>{
 
         newFirstBlock.style.width = 94+"vw"
 
         newFirstBlock.style.height = 100+"vh"
+        document.getElementsByClassName('close-button')[0].style.opacity = 1
+        
+  
      },1200)
       body.classList.add('blue')
       console.log('done')
+
+     
+
      // Change history when div is clicked
       // window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
       // customHistoryFIFO.push(window.location.href)
     }
 }
 function closeFirstBlock(target){
+  console.log('setting close for ')
+  console.log(target)
    let newFirstBlock = document.getElementById('stick-out-page')
    let firstBlock = document.getElementById('first-block')
     target.onclick=((e)=>{
-      console.log(newFirstBlock)
       newFirstBlock.style.left = 0
       newFirstBlock.style.top = 0
       newFirstBlock.style.width = firstBlock.offsetWidth + "px"
@@ -111,13 +111,16 @@ function closeFirstBlock(target){
       window.setTimeout(()=>{
 
       for(let i=0; i<firstBlockText.length; i++) {
+
+            if(firstBlockText[i].nodeName!="#text"){
               firstBlockText[i].style.transition = "opacity 1s"  
              firstBlockText[i].style.opacity = 1
+           }
       }
       newFirstBlock.remove()
       },1500)
       e.target.removeAttribute("onclick");
-      console.log('done1')
     })
+    console.log(target.onclick)
 
 }

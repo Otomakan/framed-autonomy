@@ -1,0 +1,39 @@
+Solar{
+	Industrial
+	Residential
+	Commercial 
+	Rural
+}
+
+WHERE TO PUT BATTERIES?
+
+Embedded Networks{
+	What it is
+	What we can do
+}
+
+Advanced Efficiency Solutions{
+	PFC,
+	VO
+}
+
+Energy Management{
+	Monitoring,
+	Billing
+}
+
+Go OFF GRID{
+	
+}
+
+Industries{
+	
+}
+
+Custom Solutions / Free Audit{
+	Free Audit:
+}
+
+About us{
+	
+}

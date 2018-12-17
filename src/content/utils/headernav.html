@@ -3,9 +3,10 @@
 
 <head>
 	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-	<script type='text/javascript' src='/js/main.js'></script>
-	<link rel='stylesheet' type='text/css' href='/bootstrapped-style.css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script type="text/javascript" src='/js/bundle.js'></script>
+	<script type="text/javascript" src='/js/index.js'></script>
+	<link rel="stylesheet" type="text/css" href="/bootstrapped-style.css">
 
 	<title>My New Project</title>
 
@@ -20,9 +21,22 @@
 	  </button>
 	  <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
 	    <div class='navbar-nav'>
-	      <a class='nav-item nav-link' href='/'>Home </a>
-	      <a class='nav-item nav-link' href='#solar'>Solar</a>
-	      <a class='nav-item nav-link' href='/pages/monitoring/introduction-to-monitoring.html'>Monitoring</a>
+	      <a class='nav-item menu-nav-link nav-link' data-toggle="tabajax" href='/'>Home </a>
+	      
+
+		<div class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#solar" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Solar
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	          <a class="nav-link dropdown-item menu-nav-link " href="#">Residential Solar</a>
+	          <a class="nav-link dropdown-item menu-nav-link" href="#">Commercial Solar</a>
+	          <a class="nav-link menu-nav-link dropdown-item" href="#">Industrial Solar</a>
+	          <a class="nav-link dropdown-item menu-nav-link " href="#">Rural Solar</a>
+	        </div>
+      	</div>
+
+	      <a class='nav-item menu-nav-link nav-link'  href='/pages/monitoring/introduction-to-monitoring.html'>Monitoring</a>
 	     </a>
 	    </div>
 	  </div>
