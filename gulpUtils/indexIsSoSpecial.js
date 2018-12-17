@@ -17,8 +17,8 @@ module.exports =  ()=> {
      // console.log(htmlContent)
      let mysass = fs.readFileSync(file.cwd+'/src/styles/bootstrapped-style.scss')
       mysass = mysass.toString('ascii')
-     let relevantCSS = findCSS(htmlContent, mysass )
-
+     // let relevantCSS = findCSS(htmlContent, mysass )
+     let relevantCSS = ""
     
      // console.log(typeof htmlContent)
      // if(htmlContent)

@@ -65,6 +65,9 @@ nav{
 .collapse.navbar-collapse{
   overflow: visible;
 }
+.navbar-toggler-icon:after,.navbar-toggler-icon:before{
+  display: none;
+}
 
 .nav-item.dropdown.show{
   overflow: visible;
@@ -82,6 +85,18 @@ nav{
   cursor: pointer;
   z-index: 101;
   padding-top:9px;
+}
+
+#stick-out-page{
+  overflow-y: scroll;
+  position: fixed;
+  height: 100vh;
+  width: 94+"vw";
+}
+#stick-out-page:after {
+    display: block;
+    content: "";
+    height: 100px;
 }
 
 .bar {
@@ -195,6 +210,9 @@ h2{
         background-repeat: no-repeat;
         background-size: cover;
       }
+      #second-block-text-area{
+        position:absolute;
+      }
 	 	}
 
 	 	#third-block{
@@ -214,7 +232,9 @@ h2{
  	max-width:33vw;
  	max-height:100%;
  	background: url("/assets/images/bbva-cropped.jpeg");
- 	margin:0;
+ 	background-repeat: no-repeat;
+  background-size: cover;
+  margin:0;
   padding-top: $padding-top;
  	float:left;
   h2{
@@ -222,7 +242,7 @@ h2{
     margin-left: 1em;
     padding: 20px 6px;
   }
-  .contact-box{
+  #home-contact-box{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -300,7 +320,7 @@ h2{
       max-height: none;
       height: auto;
       #first-block{
-        height: 95vh;
+        height: 100vh;
         background-position: center;
       }
       #wrapper-second-third{
@@ -339,9 +359,121 @@ h2{
     background-color: #000;
     height: 2px;
   }
-
 }
 
+//Main page assets
+// .down-arrow {
+//   // position: absolute;
+//   bottom: 20px;
+//   // left:45vw;
+//   box-sizing: border-box;
+//   height: 5vw;
+//   width: 5vw;
+//   border-style: solid;
+//   border-color: black;
+//   border-width: 0px 1px 1px 0px;
+//   transform: rotate(45deg);
+//   transition: border-width 150ms ease-in-out;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// .down-arrow:hover {
+//   border-bottom-width: 4px;
+//   border-right-width: 4px;
+// }
+
+.down-arrow{
+  display: none;
+ 
+
+  @media all and (max-width: $main-page-break), (max-height: $tablet-height-break) {
+    display: initial;
+  }
+  transition: .8s;
+  border-radius:50%;
+  height:40px;
+  width:40px;
+  border:1px solid white;
+  text-align:center;
+  padding:auto;
+  position:absolute;
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+  background-color:white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);   
+   z-index: 100;
+   cursor: pointer;
+   svg{
+    margin-top: 20%;
+    height:80%;
+    width: 80%;
+   }
+}
+.down-arrow:hover{
+  transition: .4s;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+    border: 1px solid #FFF;
+}
+
+// .down-arrow:before:hover, .down-arrow:after:hover {
+//   transform:scale(2,1.2);
+// }
+// .down-arrow:before {
+//   transform: rotate(45deg);
+// }
+// .down-arrow:after {
+//   transform: rotate(-45deg);
+// }
+.center-down-arrow-container{
+  width:100vw;
+  bottom:20px;
+  height: auto;
+  height: 40px;
+    width: 100vw;
+    bottom: 20px;
+    position: absolute;
+    text-align: center;
+  position:absolute;
+  text-align: center;
+}
+
+
+// CONTACT PAGE
+.form-container{
+      width:80vw;
+  position: relative;
+  padding: 80px 0px;
+  margin-right: auto;
+  margin-left: auto;
+
+  background-color: white;
+  padding: 50px;
+  margin-top: 60px;
+    input{
+      width:100%;
+    }
+    textarea{
+      width:100%;
+      min-height: 150px;
+    }
+  }
+
+  // FORM DESIGN
+input {
+    height: 3em;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+input::placeholder {
+    font-size: 0.8em;
+}
+input:focus{
+  border:none;
+  outline: none;
+}
 
 /*Counter*/
 
@@ -367,11 +499,16 @@ h2{
 .container-template{
   width:80vw;
   position: relative;
-  padding: 80px 0px;
+  padding-top: 80px;
+  padding-bottom: 0px;
+
   margin-right: auto;
   margin-left: auto;
 
   background-color: white;
+  @media all and (max-width: $main-page-break){
+    width:100%;
+  }
 
   .page-title{
     position: relative;
@@ -416,6 +553,9 @@ h2{
     width: 100%;
     margin:50px 0;
     padding: 30px 90px;
+   @media all and (max-width: $main-page-break), (max-height: $tablet-height-break){
+      padding:30px 30px;
+    }
   }
 }
 body.blue{
