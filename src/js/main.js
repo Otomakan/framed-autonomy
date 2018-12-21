@@ -1,4 +1,60 @@
+ready(function(){
+  let navbarBar = document.getElementsByClassName('navbar')[0]
+  console.log(document.getElementsByClassName('navbar')[0])
+    // navbarBar.style.cssText = "top"+document.getElementById('navigation-bar').getBoundingClientRect().top 'px;'
+    navbarBar.style.cssText = "visibility:visible;"
+    //Imitate Bootstrap show without important the whole library
+    let contentNav = document.getElementById('navbarNavAltMarkup')
+    let buttonNav = document.getElementsByClassName('navbar-toggler')[0]
+    let navBarNav = document.getElementsByClassName('navbar-nav')[0]
+    let aboutBox = document.getElementById('about-box')
+    let show = false
 
+    
+    buttonNav.onclick=(()=>{
+      show = !show
+
+      //Check the status of the show variable and add or remove show class accordingly
+      if(show){
+        contentNav.classList.add('show')
+        navBarNav.classList.add('show')
+      }
+      else{
+        contentNav.classList.remove('show')
+        navBarNav.classList.remove('show')
+      }
+    })
+    // const navItems = document.getElementsByClassName('menu-nav-link')
+    // for(let i = 0 ; i< navItems.length;i++){
+    //   navItems[i].onclick=((e)=>{
+    //     e.stopPropagation()
+    //     return preventLoad(e)
+    // });
+    // }
+
+    // Dropdown menu behavior
+    const dropDown =  document.getElementsByClassName("dropdown")
+
+    for(let i=0; i <dropDown.length; i++){
+      dropDown[i].onclick = (e)=>{
+       showDropdownMenu(e)
+      }
+      if(window.innerWidth >=760){
+      // We create these event handlers only if the screen is a certain size
+      dropDown[i].onmouseout = (e)=>{
+                 e.currentTarget.classList.remove('show')
+          e.currentTarget.firstChild.setAttribute('aria-expanded','false')
+          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.remove('show')
+      }
+      dropDown[i].onmouseover = (e)=>{
+        e.currentTarget.classList.add('show')
+          e.currentTarget.firstChild.setAttribute('aria-expanded','true')
+          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.add('show')
+  
+      }
+    }
+  }
+})
 
 
 //This function is used to load some HTML from targetUrl, 
@@ -40,58 +96,7 @@
   // Maybe use blobs by creating a reader then read as texthttp://qnimate.com/an-introduction-to-javascript-blobs-and-file-interface/ but creating blob just uses up client memory
 
 }
-ready(function(){
-  let navbarBar = document.getElementsByClassName('navbar')[0]
-  console.log(document.getElementsByClassName('navbar')[0])
-    // navbarBar.style.cssText = "top"+document.getElementById('navigation-bar').getBoundingClientRect().top 'px;'
-    navbarBar.style.cssText = "visibility:visible;"
-    //Imitate Bootstrap show without important the whole library
-    let contentNav = document.getElementById('navbarNavAltMarkup')
-    let buttonNav = document.getElementsByClassName('navbar-toggler')[0]
-    let navBarNav = document.getElementsByClassName('navbar-nav')[0]
-    let aboutBox = document.getElementById('about-box')
-    let show = false
 
-    
-    buttonNav.onclick=(()=>{
-      show = !show
-
-      //Check the status of the show variable and add or remove show class accordingly
-      if(show){
-        contentNav.classList.add('show')
-        navBarNav.classList.add('show')
-      }
-      else{
-        contentNav.classList.remove('show')
-        navBarNav.classList.remove('show')
-      }
-    })
-    // const navItems = document.getElementsByClassName('menu-nav-link')
-    // for(let i = 0 ; i< navItems.length;i++){
-    //   navItems[i].onclick=((e)=>{
-    //     e.stopPropagation()
-    //     return preventLoad(e)
-    // });
-    // }
-
-    // Dropdown menu behavior
-    const dropDown =  document.getElementsByClassName("dropdown")
-
-    for(let i=0; i <dropDown.length; i++){
-      dropDown[i].onclick = (e)=>{
-        if(e.currentTarget.classList.contains('show')){
-          e.currentTarget.classList.remove('show')
-          e.currentTarget.firstChild.setAttribute('aria-expanded','false')
-          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.remove('show')
-       }
-        else{
-          e.currentTarget.classList.add('show')
-          e.currentTarget.firstChild.setAttribute('aria-expanded','true')
-          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.add('show')
-        }
-      }
-    }
-})
 
 const preventLoad = function (e){
         console.log(e.target)
@@ -135,6 +140,19 @@ function ready(fn) {
         fn();
     });
   }
+}
+
+const showDropdownMenu = (e)=>{
+   if(e.currentTarget.classList.contains('show')){
+          e.currentTarget.classList.remove('show')
+          e.currentTarget.firstChild.setAttribute('aria-expanded','false')
+          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.remove('show')
+       }
+        else{
+          e.currentTarget.classList.add('show')
+          e.currentTarget.firstChild.setAttribute('aria-expanded','true')
+          e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.add('show')
+      }
 }
 
 

@@ -105,17 +105,13 @@ gulp.task('html',()=>
   gulp.src('src/*.html')
   .pipe(gulp.dest('dist'))
   )
-gulp.task('test',()=>
-  gulp.src('src/content/*.html')
-  .pipe(templatePrefixer())
-  .pipe(gulp.dest('dist/content/pages')
-))
+
 gulp.task('jsonhtml',()=>
   gulp.src(['src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**/*.json','src/content/contentJson/**/**/**/*.json'],
     {base: './src/content/contentJson/'}) 
   .pipe(jsonLoader())
   .pipe(rename({extname:'.html'}))
-  .pipe(gulp.dest('dist/pages'))
+  .pipe(gulp.dest('dist/content'))
   )
 gulp.task('htmlutils',()=>
   gulp.src('src/content/utils/*.html')

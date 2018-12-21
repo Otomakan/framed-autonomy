@@ -150,6 +150,38 @@ function closeFirstBlock(target){
       },1500)
       e.target.removeAttribute("onclick");
     })
+    target.click=((e)=>{
+      newFirstBlock.style.left = 0
+      newFirstBlock.style.top = 0
+      newFirstBlock.style.width = firstBlock.offsetWidth + "px"
+      newFirstBlock.style.height = firstBlock.offsetHeight +"px"
+      let newFirstBlockText = newFirstBlock.childNodes[2].childNodes
+      for(let i=0; i<newFirstBlockText.length; i++) {
+        console.log(newFirstBlockText[i])
+            if(newFirstBlockText[i].tagName && newFirstBlockText[i].tagName!="STYLE"){
+              newFirstBlockText[i].style.transition = "opacity 0.5s"  
+             newFirstBlockText[i].style.opacity = 0
+           }
+      }
+      firstBlock.style.opacity = 1
+
+      let firstBlockText = firstBlock.childNodes
+      window.setTimeout(()=>{
+       newFirstBlock.style.opacity = 0
+      },700)
+      window.setTimeout(()=>{
+
+      for(let i=0; i<firstBlockText.length; i++) {
+
+            if(firstBlockText[i].nodeName!="#text"){
+              firstBlockText[i].style.transition = "opacity 1s"  
+             firstBlockText[i].style.opacity = 1
+           }
+      }
+      newFirstBlock.remove()
+      },1500)
+      e.target.removeAttribute("onclick");
+    })
     console.log(target.onclick)
 
 }
