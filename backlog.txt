@@ -16,3 +16,5 @@ in FIFO queue. We detect the last page and load it on top of our current one.
 have a single element id ='body-wrapper' so we don't have to realod the navbar every time. The default behavior of ajax
 should be to modify that body-wrapper
 Find a smart way to remove the double quotes from index.html
+
+Maybe make some animation of the svg assets (eg Voltage optimization page)

@@ -1,7 +1,11 @@
 {
 	"template": "two-picture-page",
-	"title":"Monitoring! ",
-	"subtitle":"A Page about Monitoring",
-	"para1":"Vivamus odio nulla, placerat et suscipit et, imperdiet eget ante. Pellentesque urna metus, euismod sed justo nec, euismod accumsan elit. Fusce eget turpis lacus. Nulla sed metus gravida, hendrerit magna eu, tincidunt quam. Curabitur mollis pulvinar scelerisque. Etiam massa orci, posuere a porttitor vel, lobortis nec ex. Aenean mattis lorem in euismod posuere. Quisque non nisl purus. Mauris vel rutrum dolor, non suscipit est.",
-	"para2":"Proin quam elit, rhoncus sed suscipit at, finibus vel justo. Maecenas et lorem felis. Ut velit enim, venenatis ut tincidunt et, accumsan nec eros. Donec sapien nisi, tristique ac commodo at, mollis id odio. Phasellus eros ex, eleifend hendrerit tincidunt sed, tincidunt nec eros. Phasellus tortor augue, varius quis dui ut, tincidunt consectetur nisl. Curabitur id ultricies justo. Maecenas condimentum molestie turpis a rhoncus. Donec congue tellus est, ac viverra nulla sollicitudin quis. Cras cursus ligula ut tincidunt fringilla. Aenean tincidunt turpis ipsum, eget laoreet tortor posuere at. In hac habitasse platea dictumst. Quisque a fringilla mauris. Cras erat libero, euismod vitae ultrices et, tincidunt ut leo. Etiam auctor nunc vel ligula aliquam porttitor."
+	"title":"Energy Monitoring ",
+	"subtitle":"Collecting quality data is the driver of smart business decisions",
+	"mainimage":"/assets/images/blue-meter.jpg",
+	"para1" : "Manage My Power (MMP) energy monitoring system captures, analyses and remotely stores data every minute, which means you can access immediate, accurate and up-to-date information, from anywhere, via the Power Portal.",
+	"para2title": "What is the power portal?",
+	"para2":"The Power Portal combines energy monitoring hardware and software into powerful Cloud-based architecture that receives and interprets data in real-time. All you need to do is log in to view the results. <br/>The portal can:<ul><li> Control circuits and appliances remotely</li><li> Email you when demand and consumption changes</li><li> Compare your energy bill against actual energy tariffs</li><li> Display and forecast the outcomes of energy management strategies.</li></ul>",
+	"imagetwo":"/assets/images/energy-portal.png"
 }
+

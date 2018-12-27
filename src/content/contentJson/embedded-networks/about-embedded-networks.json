@@ -1,6 +1,11 @@
 {
-	"template": "template-page",
-	"title":"Template Page",
-	"subtitle":"A Page about templates",
-	"content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lore"
+	"template": "two-picture-page",
+	"title":"Embedded Networks",
+	"subtitle":"Create your Own Energy Network ",
+	"mainimage":"/assets/images/chromatics-embedded-network.png",
+	"para1":"Embedded networks are a cutting edge solution for futuristic power-sharing arrangements.With the aim of reducing reliance ongrid-sourced electricity, the energy consumed within a single structure is made feasible through wholesale energy procurement.<br/><br/>Simply put, embedded networks allow tenantsin a single building to source energy from al ocal power source, harnessed through renewable sources such as solar panels.<br/><br/>These arrangements make an easy fit in a variety of commercial and residential settings,including hospitals, airports, apartment buildings, shopping malls, etc.",
+	"para2title":"Benefits",
+	"para2":"Embedded networks create an additional stream of revenue for property owners in the form of utility payments from tenants.<br/><br/>It also represents a more affordable and reliable source of power for tenants/renters, especially if generated through renewable forms of energy.<br/><br/>For developers, this solution facilitates the reduction of upfront infrastructure costs and expedites the meter connection process.",
+	"imagetwo": "/assets/images/environment-factory-industrial-343696_v1_current.jpg"
+
 }

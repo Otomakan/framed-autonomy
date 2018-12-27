@@ -16,6 +16,10 @@ div{
     text-overflow: ellipsis;
 }
 
+h2{
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 $blue : #c2dde1;
 $light-blue: #dbeff1;
 $bright-blue: #b6e2e8;
@@ -539,13 +543,16 @@ input:focus{
       h1,h2{
         position: absolute;
         left:50px;
+        margin:0;
       }
       h1{
         top:25%
       }
       .page-subtitle{
+        max-width: 700px;
         position: absolute;
         top:50%;
+        background: rgba(255,255,255,0.3);
       }
     }
   }
@@ -568,29 +575,54 @@ body.blue{
   }
   .second-section{
     width:100%;
+    height:auto;
+    h1{
+      margin-bottom: 1.5em;
+    }
+    margin: 60px 0;
+    .para-image-wrapper{
+
     display:flex;
     flex-wrap: wrap;
-  
-    margin: 60px 0;
-    .paragraph{
-      width:50%;
-      padding: 0px 40px 40px 0px;
-      min-width: 255px;
-      @media screen and (max-width: 901px) {
+    height: auto;
+      .paragraph{
+        width:50%;
+        padding: 0px 40px 40px 0px;
+        min-width: 255px;
+        @media screen and (max-width: 901px) {
+            width: 100%;
+          }
+      }
+      .image{
+        height: 400px;
+        width:50%;
+        min-width: 255px;
+        @media screen and (max-width: 901px) {
           width: 100%;
         }
+        img{
+          height:100%;
+          float: right;
+        }
+      }
     }
-    .image{
-      height: 400px;
-      width:50%;
-      min-width: 255px;
-      @media screen and (max-width: 901px) {
-        width: 100%;
-      }
-      img{
-        height:100%;
-        float: right;
-      }
+    @media screen and (min-width: 901px) {
+      .para-image-wrapper{
+          display: block;
+          position: relative;
+          width:100%;
+         .paragraph{
+          background-color:rgba(255,255,255,0.8);
+          width:60%;
+          position: absolute;
+          float:left;
+         }
+         .image{
+            height: 400px;
+            width:100%;
+            float: right;
+         }
+    }
     }
   }
 }

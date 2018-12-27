@@ -50,7 +50,8 @@ module.exports =  ()=> {
         const pageContent = htmlContent.slice(7,htmlContent.length)
         const script = loadBodyPrefixer()
         // .replace(/\s+/g, '')
-        const header = "<script>var content=\""+ relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
+        //  add this to get the css before
+        const header = "<script>var content=\"" + relevantCSS.replace(/\""/g,"\'").replace(/\r?\n|\r/g,"") + pageContent.toString().replace(/\"/g,"\'")+ "\";"+  script+ "</script>"  
         
         file.contents = Buffer.from(header,'utf8')
       }

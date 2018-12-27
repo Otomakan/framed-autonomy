@@ -1,6 +1,7 @@
 {
 	"template": "template-page",
-	"title":"Template Page",
-	"subtitle":"A Page about templates",
-	"content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lore"
+	"title":"Power Factor Correction",
+	"mainimage":"/assets/images/environment-factory-industrial-343696_v1_current.jpg",
+	"subtitle":"Power Factor Correction technology can reduce the demand charge, easily saving your business power and money",
+	"content":"When you use electrical equipment (like lights), a portion of the power you use is distorted and becomes useless (Reactive Power). Because of this useless power, the equipment needs additional, useful electricity (Real Power) to run. <h2>Power Factor Explained</h2>When you use electrical equipment (like lights), a portion of the power you use is distorted and becomes useless (Reactive Power). Because of this useless power, the equipment needs additional, useful electricity (Real Power) to run. <br/>The penalties for having a poor power factor can be high and add a significant cost to your monthly bill.<br/><br/> Energy retailers measure your power factor on a scale between zero (poor) and one (optimal efficiency). This is how they calculate your kVA charge.<br/><br/><h2>MINIMISING KVA WITH MANAGE MY POWER FACTOR CORRECTION</h2>Manage My Power factor correction equipment reduces the kVA demand charge on your electricity bill. Our equipment uses capacitors to remove the distorted power, so you only pay for the Real Power (or liquid beer in the info graphic above)."
 }

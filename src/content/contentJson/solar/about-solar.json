@@ -1,6 +1,7 @@
 {
 	"template": "template-page",
-	"title":"Template Page",
-	"subtitle":"A Page about templates",
-	"content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lore"
+	"title":"About Solar",
+	"mainimage":"/assets/images/panels.jpg",
+	"subtitle":"Automomy delivers the dual benefits of saving  money while demonstrating your commitment to the environment",
+	"content":"Solar energy has the power to deliver long term cost savings to your business. By having direct access to your energy data, you can quickly improve efficiency within your business, lowering demand from the grid, and decreasing your energy bills.Manage My Power Solar PV empowers you to:<ul><li>monitor circuits or individual appliances</li><li>identify areas for improvement</li><li>generate your own bills</li><li>compare your readings with the energy retailers</li></ul><h2>SOLAR FOR ANY SCALE</h2>We ensure your business is fitted with first-rate products (from proven suppliers with comprehensive warranties), on a scale that will meet demand and generate the greatest return on your investment. We also offer battery storage solutions.<h2>GREENER ENERGY</h2>Using solar energy is not only a sustainable alternative, but could be a point of difference for your brand - making it more appealing to tenants, buyers, and customers. We can even help you showcase your energy generation and savings to the public. If you are in Australia, you may be eligible for tax and renewable energy incentives (some up-front), making installing solar more affordable. Find out more and take advantage of rebates based on Small-scale Technology Certificates (STCs) or revenue from Large-scale Generation Certificates (LGCs) and make the switch to solar."
 }
