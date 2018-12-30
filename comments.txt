@@ -20,3 +20,6 @@ Look at how to incorporate "Load template" to the history .push function I creat
 especially in combination with the navigation bar
 
 
+Think abut using turbolink for navigation
+
+Make a side menu like veolia.com

@@ -1,6 +1,4 @@
 if(!document.body){
-	console.log(document)
-	console.log(!document.body)
 	document.open();
 	document.body = document.createElement("body");
 	function loadBody(){
@@ -9,7 +7,6 @@ if(!document.body){
 	          	let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  
 				document.body.innerHTML = myString
 				document.body.innerHTML+=content
-			 	// console.log(content);
 				document.write(myString + content)
 				document.close();
         	})
@@ -26,6 +23,5 @@ else{
 	console.log(parentTag)
 	const childEl = document.create('div')
 	childEl.innerHTML = content
-	console.log(childEl)
 	parentTag.appendChild(childEl)
 }

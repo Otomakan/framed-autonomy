@@ -41,6 +41,8 @@ body{
   padding: 0;
   // padding-top: 56px; 
 }
+
+
 .body-wrapper { 
   // display: grid;
   // grid-template-areas: 
@@ -78,6 +80,16 @@ nav{
 }
 .dropdownmenu.show{
   overflow: none
+}
+.dropdown-menu{
+  background-color:rgba(255, 255, 255, 0.95) ;
+  @media all and (max-width: 991px){
+    background-color: rgba(255, 255, 255, 0);
+  }
+  border-color:transparent;
+  .nav-link.dropdown-item.menu-nav-link{
+    padding: 0.25rem 1.5rem;
+  }
 }
 .bars {
   /*   background-color:pink; */
@@ -500,7 +512,26 @@ input:focus{
 
 }
 
+@keyframes introducecontainertemplate{
+  0%{height: 0; 
+      transform: scale(0.8);}
+  60%{height:800px;
+    transform:scale(0.8);
+    }
+  99%{
+    height: 800px;
+  }
+  100%{height: auto;
+    transform:scale(1);
+  }
+}
+
+@keyframes leavecontainertemplate{
+
+
+}
 .container-template{
+  animation: introducecontainertemplate 3s forwards;
   width:80vw;
   position: relative;
   padding-top: 80px;
@@ -517,13 +548,24 @@ input:focus{
   .page-title{
     position: relative;
     width: 100%;
-
+    @keyframes revealmainimage{
+      from{opacity: 0;}
+      to{opacity: 1;};
+    }
     .image-container{
       // position: relative;
       float:right;
       // width:800px;
       height:400px;
+      opacity: 0;
+      animation: 1s revealmainimage forwards;
+      animation-delay:1.5s;
+      
       img{
+        opacity: 0;
+        animation: 1s revealmainimage forwards;
+        animation-delay:1.5s;
+        
         // z-index:101
         // width:800px;
         height: 400px;
@@ -539,14 +581,35 @@ input:focus{
       
       }
   }
+  @keyframes slidetitlein {
+    from{transform : translateX(-1000px);}
+    to {transform : translateX(0);}
+  }
+
+@keyframes titlefadein {
+    from{opacity: 0}
+    to{opacity: 1}
+}
     .title-text{
       h1,h2{
+  // animation-iteration-count: infinite;
         position: absolute;
         left:50px;
         margin:0;
+        opacity: 0;
+        padding:0.2em;
       }
       h1{
-        top:25%
+
+        animation: 0.4s  titlefadein forwards;
+        animation-delay:0.8s;
+        top:25%;
+        background: rgba(255,255,255,0.3);
+      }
+      h2{
+        
+        animation: 0.4s linear titlefadein forwards;
+        animation-delay:1s;
       }
       .page-subtitle{
         max-width: 700px;

@@ -1,6 +1,8 @@
+let navBarShow = false
+
+
 ready(function(){
   let navbarBar = document.getElementsByClassName('navbar')[0]
-  console.log(document.getElementsByClassName('navbar')[0])
     // navbarBar.style.cssText = "top"+document.getElementById('navigation-bar').getBoundingClientRect().top 'px;'
     navbarBar.style.cssText = "visibility:visible;"
     //Imitate Bootstrap show without important the whole library
@@ -8,14 +10,25 @@ ready(function(){
     let buttonNav = document.getElementsByClassName('navbar-toggler')[0]
     let navBarNav = document.getElementsByClassName('navbar-nav')[0]
     let aboutBox = document.getElementById('about-box')
-    let show = false
-
     
+    // close the navigation bar if we click on the body 
+    let bodyWrapper = document.getElementsByClassName('body-wrapper')
+    for (let i =0; i< bodyWrapper.length; i++){
+      bodyWrapper[i].onclick  =()=>{
+        console.log('clock')
+        if(navBarShow){
+          navBarShow = !navBarShow
+          contentNav.classList.remove('show')
+          navBarNav.classList.remove('show')
+        }
+      }
+    }
+    // the logic for clsoing the navbar when a link is clicked is in history.js
     buttonNav.onclick=(()=>{
-      show = !show
-
+      navBarShow = !navBarShow
+      console.log('click')
       //Check the status of the show variable and add or remove show class accordingly
-      if(show){
+      if(navBarShow){
         contentNav.classList.add('show')
         navBarNav.classList.add('show')
       }
@@ -24,6 +37,7 @@ ready(function(){
         navBarNav.classList.remove('show')
       }
     })
+
     // const navItems = document.getElementsByClassName('menu-nav-link')
     // for(let i = 0 ; i< navItems.length;i++){
     //   navItems[i].onclick=((e)=>{
@@ -42,7 +56,7 @@ ready(function(){
       if(window.innerWidth >=760){
       // We create these event handlers only if the screen is a certain size
       dropDown[i].onmouseout = (e)=>{
-                 e.currentTarget.classList.remove('show')
+          e.currentTarget.classList.remove('show')
           e.currentTarget.firstChild.setAttribute('aria-expanded','false')
           e.currentTarget.getElementsByClassName('dropdown-menu')[0].classList.remove('show')
       }
@@ -60,13 +74,13 @@ ready(function(){
 //This function is used to load some HTML from targetUrl, 
 // and replace the content of targetDiv with it.
  function loadTemplate(targetDiv, targetUrl,targetContent) {
+  console.log(targetDiv)
   targetDiv.innerHTML = ""
-  console.log('loading')
     fetch(targetUrl).then(res=>{
       res.arrayBuffer().then((ab)=>{
         // for(let i =0; i<ab.length; i++){
           let myString =  String.fromCharCode.apply(null, new Uint8Array(ab))  // }
-          console.log(typeof myString)
+
           //Eleminating all the scripts and useless data
           targetDiv.innerHTML += myString.match(/(content=\")([^]+)\"/)[0].replace(/(content=\")/,"").slice(0, -1)
         })

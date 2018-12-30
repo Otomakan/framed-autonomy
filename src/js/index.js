@@ -42,7 +42,6 @@ function arrowScrollDown(){
 function openFirstBlock(){
     let body = document.body
       document.getElementById("first-block-more-info").onclick =()=>{
-      console.log('clock')
       let firstBlock = document.getElementById('first-block')
       let firstBlockText = firstBlock.childNodes
       let bodyWrapper = document.getElementsByClassName('body-wrapper')[0]
@@ -104,18 +103,14 @@ function openFirstBlock(){
   
      },1200)
       body.classList.add('blue')
-      console.log('done')
-
-     
 
      // Change history when div is clicked
-      // window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
-      // customHistoryFIFO.push(window.location.href)
+      window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
+      customHistoryFIFO.push(window.location.href)
     }
 }
+
 function closeFirstBlock(target){
-  console.log('setting close for ')
-  console.log(target)
    let newFirstBlock = document.getElementById('stick-out-page')
    let firstBlock = document.getElementById('first-block')
     target.onclick=((e)=>{
@@ -125,7 +120,7 @@ function closeFirstBlock(target){
       newFirstBlock.style.height = firstBlock.offsetHeight +"px"
       let newFirstBlockText = newFirstBlock.childNodes[2].childNodes
       for(let i=0; i<newFirstBlockText.length; i++) {
-        console.log(newFirstBlockText[i])
+
             if(newFirstBlockText[i].tagName && newFirstBlockText[i].tagName!="STYLE"){
               newFirstBlockText[i].style.transition = "opacity 0.5s"  
              newFirstBlockText[i].style.opacity = 0
@@ -157,8 +152,7 @@ function closeFirstBlock(target){
       newFirstBlock.style.height = firstBlock.offsetHeight +"px"
       let newFirstBlockText = newFirstBlock.childNodes[2].childNodes
       for(let i=0; i<newFirstBlockText.length; i++) {
-        console.log(newFirstBlockText[i])
-            if(newFirstBlockText[i].tagName && newFirstBlockText[i].tagName!="STYLE"){
+          if(newFirstBlockText[i].tagName && newFirstBlockText[i].tagName!="STYLE"){
               newFirstBlockText[i].style.transition = "opacity 0.5s"  
              newFirstBlockText[i].style.opacity = 0
            }
@@ -182,7 +176,6 @@ function closeFirstBlock(target){
       },1500)
       e.target.removeAttribute("onclick");
     })
-    console.log(target.onclick)
 
 }
 
@@ -250,7 +243,6 @@ function openContactUs(target){
       
      },1200)
       body.classList.add('blue')
-      console.log('done')
      
     }
     
