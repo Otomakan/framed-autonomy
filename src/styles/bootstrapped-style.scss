@@ -187,8 +187,8 @@ h2{
   // padding-top: $padding-top;
   float:left;
  	#first-block{
-    background: url('/assets/images/wind_turbine_back_no_man_nothing_cropped.jpg');
- 		background-size: cover;
+   //  background: url('/assets/images/wind_turbine_back_no_man_nothing_cropped.jpg');
+ 		// background-size: cover;
     width:100%;
  		height:70%;
  		max-width:100%;
@@ -198,7 +198,33 @@ h2{
     background-color:white;
  		transition: width 1s;
     position: relative;
+    h2{
+      position:absolute;
+      z-index: 2;
+    }
+    .first-block-image-container{
+       float:right;
+      // width:800px;
+      height:100vh;
+      min-height: 100vh;
+      opacity: 0;
+      animation: 1s revealmainimage forwards;
+      animation-delay:1.5s;
+      img{
+        opacity: 0;
+        animation: 1s revealmainimage forwards;
+        animation-delay:1.5s;
+        transform:translateY(30px);
+        height: 400px;
+        // background-image:  filter(url('/assets/images/panels.jpg'), blur(20px));; 
+        position:absolute;
+         min-height: 100vh;
+        max-height: 100vh;
+        top:0px;
+        right:0px;   
+      }
  	}
+ }
 
  	#wrapper-second-third{
  		width:100%;
@@ -291,7 +317,8 @@ h2{
   padding: 0.2em;
   margin-left:50px;
   cursor: pointer;
-  position: absolute;
+  position:absolute;
+  z-index: 2;
   bottom:40px;
   font-size: 3em;
 }
@@ -319,7 +346,7 @@ h2{
   }
 
 
-@media all and (max-width: $main-page-break), (max-height: $tablet-height-break) {
+
   body{
     height: auto;
     min-height: none;
@@ -375,37 +402,12 @@ h2{
     background-color: #000;
     height: 2px;
   }
-}
 
-//Main page assets
-// .down-arrow {
-//   // position: absolute;
-//   bottom: 20px;
-//   // left:45vw;
-//   box-sizing: border-box;
-//   height: 5vw;
-//   width: 5vw;
-//   border-style: solid;
-//   border-color: black;
-//   border-width: 0px 1px 1px 0px;
-//   transform: rotate(45deg);
-//   transition: border-width 150ms ease-in-out;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// .down-arrow:hover {
-//   border-bottom-width: 4px;
-//   border-right-width: 4px;
-// }
-
+// ****MAIN PAGE ASSEST ****//
 .down-arrow{
-  display: none;
- 
 
-  @media all and (max-width: $main-page-break), (max-height: $tablet-height-break) {
-    display: initial;
-  }
+  display: initial;
+  
   transition: .8s;
   border-radius:50%;
   height:40px;
