@@ -5,6 +5,7 @@ ready(function(){
     openFirstBlock()
     openContactUs()
     arrowScrollDown()
+ 
   })
 
 
@@ -91,6 +92,10 @@ function openFirstBlock(){
         newFirstBlock.style.left = 3+"vw"
         firstBlock.style.opacity = 0
         closeFirstBlock(bodyWrapper)
+        let navBar = document.getElementsByTagName('nav')
+        for(let i=0; i<navBar.length;i++)
+          closeFirstBlock(navBar[i])
+
         closeFirstBlock(document.getElementsByClassName('close-button')[0])
             },350)
      setTimeout(()=>{
@@ -127,6 +132,7 @@ function closeFirstBlock(target){
            }
       }
       firstBlock.style.opacity = 1
+ document.getElementById("home-contact-box").style.opacity = 1
 
       let firstBlockText = firstBlock.childNodes
       window.setTimeout(()=>{
