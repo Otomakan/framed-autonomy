@@ -42,11 +42,12 @@ function arrowScrollDown(){
 }
 function openFirstBlock(){
     let body = document.body
-      document.getElementById("first-block-more-info").onclick =()=>{
+      document.getElementById("first-block-more-info").onclick =(e)=>{
       let firstBlock = document.getElementById('first-block')
       let firstBlockText = firstBlock.childNodes
       let bodyWrapper = document.getElementsByClassName('body-wrapper')[0]
       let closeButton = document.createElement('div')
+      let targetURL  =  e.target.getAttribute('href')
       closeButton.classList.add("close-button")
 
       
@@ -68,7 +69,8 @@ function openFirstBlock(){
       newFirstBlock.style.left = firstBlock.getBoundingClientRect().left +'px'
       newFirstBlock.style.transition =  "all 1s"
       newFirstBlock.style.backgroundColor = "white"
-       loadTemplate(newFirstBlock,'/pages/my-template.html')
+
+       loadTemplate(newFirstBlock,targetURL)
 
     
       newFirstBlock.appendChild(closeButton)
@@ -110,7 +112,7 @@ function openFirstBlock(){
       body.classList.add('blue')
 
      // Change history when div is clicked
-      window.history.pushState({page:'my template'},'my template page', '/pages/my-template.html')
+      window.history.pushState({page:'free energy quote'},'Free Energy Quote', targetURL)
       customHistoryFIFO.push(window.location.href)
     }
 }
@@ -118,7 +120,9 @@ function openFirstBlock(){
 function closeFirstBlock(target){
    let newFirstBlock = document.getElementById('stick-out-page')
    let firstBlock = document.getElementById('first-block')
+    
     target.onclick=((e)=>{
+      e.preventDefault()
       newFirstBlock.style.left = 0
       newFirstBlock.style.top = 0
       newFirstBlock.style.width = firstBlock.offsetWidth + "px"
@@ -132,6 +136,7 @@ function closeFirstBlock(target){
            }
       }
       firstBlock.style.opacity = 1
+    document.getElementById("home-contact-box").style.opacity = 1
  document.getElementById("home-contact-box").style.opacity = 1
 
       let firstBlockText = firstBlock.childNodes
