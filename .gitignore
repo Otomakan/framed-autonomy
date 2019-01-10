@@ -1,3 +1,5 @@
  src/assets/
 node_modules
 dist
+backlog.txt
+comments.txt

@@ -42,6 +42,27 @@ body{
   // padding-top: 56px; 
 }
 
+@mixin polka-dots($base, $accent, $radial, $size, $position, $attachment) {
+  background-color: $base;
+  background-image: radial-gradient($accent $radial, transparent $radial);
+  background-size: $size $size;
+  background-position: $position;
+  background-attachment: $attachment;
+}
+
+@mixin titlecontainer{
+    -webkit-margin-before: 0.83em;
+    margin-block-start: 0.83em;
+    -webkit-margin-after: 0.83em;
+    margin-block-end: 0.83em;
+    -webkit-margin-start: 0px;
+    -moz-margin-start: 0px;
+    margin-inline-start: 0px;
+    -webkit-margin-end: 0px;
+    -moz-margin-end: 0px;
+    margin-inline-end: 0px;
+    margin: 4em;
+}
 
 .body-wrapper { 
   // display: grid;
@@ -61,6 +82,18 @@ body{
   /*Navbar*/
 nav{
   z-index: 10000;
+}
+.navbar-toggler{
+    margin-right: 0.3em;
+    border: none;
+    background-color: white;
+    background-image: radial-gradient(rgba(0, 0, 0, 1) 20%, transparent 10%);
+    background-size: 16px 12px;
+    background-position: center;
+    /* background-attachment: scroll; */
+    span{
+      background-image:none!important;
+    }
 }
 .navbar{
   overflow: visible;
@@ -122,15 +155,15 @@ nav{
   position: absolute;
 }
 
-span::before,
-span::after {
-  content: "";
-  display: block;
-  background-color: #fff;
-  width: 100%;
-  height: 4px;
-  position: absolute;
-}
+// span::before,
+// span::after {
+//   content: "";
+//   display: block;
+//   background-color: #fff;
+//   width: 100%;
+//   height: 4px;
+//   position: absolute;
+// }
 
 .bar::before {
   transform: translateY(-9px);
@@ -250,6 +283,7 @@ h2{
       position: absolute;
       z-index: 2;
       bottom:40px;
+      height: 150px;
 
           #first-block-more-info {
           animation: ease-out firstblocktitlereveal 0.5s forwards;
@@ -262,6 +296,9 @@ h2{
           cursor: pointer;
           z-index: 2;
           font-size: 3em;
+          svg{
+            height:100px;
+          }
         }
       }
    
@@ -295,12 +332,9 @@ h2{
  		display: inline-block;
     
 	 	#second-block{
-      background: url('/assets/images/smart_city.svg');
       padding: 30px;
 	 		width:40%;
-	 		height:30vh;
-	 		max-width:40%;
-	 		max-height:20%;
+	 		height:100vh;
 	 		margin:0;
 	 		float: left;
       position: relative;
@@ -422,15 +456,48 @@ h2{
           width:100vw;
           max-width:100vw;
           min-height: 300px;
-          height: 50vh;
+          height: 100vh;
         }
 
         #third-block{
           width:100vw;
           max-width:100vw;
           min-height: 300px;
-          height: 50vh;
+          height: 100vh;
           background-color: $light-blue;
+          position: relative;
+            @include polka-dots($light-blue, rgba(255,255,255,0.9), 6%, 35px, center,scroll );
+          .white-bar{
+            background-color:white;
+            position: absolute;
+            height:100vh;
+            
+            width:25%;
+            z-index: 1;
+          }
+          h2{
+          margin-left:4em;
+          margin-top:30vh;
+            position:absolute;
+            z-index: 2;
+          }
+          h2:before{
+            width: 100px;
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            border: 1.5px solid black;
+          }
+          .third-block-h2-background{
+            border: none;
+            background-color: $light-blue;
+            left: 25vw;
+            width:75vw;
+            top: 30vh;
+            height:150px;
+            position:absolute;
+          }
         }
       }
     }
@@ -446,11 +513,11 @@ h2{
   background-color: #000;
   height:2px;
   }
-  span::before,
-  span::after {
-    background-color: #000;
-    height: 2px;
-  }
+  // span::before,
+  // span::after {
+  //   background-color: #000;
+  //   height: 2px;
+  // }
 
 // ****MAIN PAGE ASSEST ****//
 .down-arrow{

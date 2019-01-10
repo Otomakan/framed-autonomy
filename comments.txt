@@ -23,3 +23,6 @@ especially in combination with the navigation bar
 Think abut using turbolink for navigation
 
 Make a side menu like veolia.com
+
+Maybe create an FAQ at the end of each page
+
