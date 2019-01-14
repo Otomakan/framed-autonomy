@@ -26,3 +26,7 @@ Make a side menu like veolia.com
 
 Maybe create an FAQ at the end of each page
 
+make some more pages which aren't necessarily in the navbar, eg about financing, taxes..
+Maybe have a section on Procurement
+
+Position ourselves more as onsultants ith, maybe make some cool animations with data showing
