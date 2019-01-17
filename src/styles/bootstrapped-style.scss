@@ -15,6 +15,9 @@ div{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+div,p,ul,li,span{
+   font-size: 20px;
+}
 
 h2{
   margin-bottom: 1em;
@@ -124,6 +127,9 @@ nav{
     padding: 0.25rem 1.5rem;
   }
 }
+.nav-link{
+    font-size: 16px;
+}
 .bars {
   /*   background-color:pink; */
   position: absolute;
@@ -209,6 +215,21 @@ h1{
 }
 h2{
   font-family: NexaLight;
+}
+
+// DEAL WITH IMAGES
+.image-loader {
+  background: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden !important;
+  height: 0;
+  position: relative;
+  img {
+    position: absolute;
+  }
 }
 
  #left-block{

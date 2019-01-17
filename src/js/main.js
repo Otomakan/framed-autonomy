@@ -68,7 +68,28 @@ ready(function(){
       }
     }
   }
+
+  imageLoader()
+  
 })
+
+  function imageLoader() {
+    var containers = document.getElementsByClassName('image-loader');
+    var containerList = Array.prototype.slice.call(containers);
+    containerList.forEach(getImage);
+  }
+
+  // get all images from within 'image-loader' containers
+  function getImage(element) {
+    var images = element.getElementsByTagName('img');
+    var imageList = Array.prototype.slice.call(images);
+    imageList.forEach(addImageLoadingClass);
+  }
+
+  // add 'image-loading' class
+  function addImageLoadingClass(element) {
+    element.classList.add('image-loading');
+  }
 
 
 //This function is used to load some HTML from targetUrl, 
