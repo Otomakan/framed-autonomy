@@ -39,8 +39,8 @@ gulp.task('serve', ()=> {
     // gulp.watch('src/js/*.js',['browserify']).on('change',browserSync.reload)
     // gulp.watch('*').on('change',browserSync.reload)
     gulp.watch(['src/js/main.js','src/js/transitions.js','src/js/history.js','serviceWorkers.js'],['compress','main-bundle']).on('change',browserSync.reload)
-    gulp.watch(['src/content/templates/*.html','src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**/*.json'],['jsonhtml']).on('change',browserSync.reload)
-    gulp.watch('src/content/*.html',['indexhtml']).on('change',browserSync.reload)
+    gulp.watch(['src/content/templates/*.html','src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**.json'],['jsonhtml']).on('change',browserSync.reload)
+    gulp.watch('src/content.html',['indexhtml']).on('change',browserSync.reload)
 })
 
 
@@ -101,13 +101,22 @@ gulp.task('imagemin', () =>
         .pipe(gulp.dest('dist/assets/images/'))
 );
 
+
+gulp.task('fonts', () =>
+    gulp.src('src/assets/fonts/*')
+        // .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/fonts/'))
+);
+
+
+
 gulp.task('html',()=>
   gulp.src('src/*.html')
   .pipe(gulp.dest('dist'))
   )
 
 gulp.task('jsonhtml',()=>
-  gulp.src(['src/content/contentJson/*.json','src/content/contentJson/**/*.json','src/content/contentJson/**/**/*.json','src/content/contentJson/**/**/**/*.json'],
+  gulp.src(['src/content/contentJson/*.json','src/content/contentJson/**.json','src/content/contentJson/***/*.json','src/content/contentJson/**/**/**/*.json'],
     {base: './src/content/contentJson/'}) 
   .pipe(jsonLoader())
   .pipe(rename({extname:'.html'}))
@@ -124,6 +133,6 @@ gulp.task('indexhtml',()=>
   .pipe(gulp.dest('dist/'))
   )
 // Remember to put imagemin later on in
-gulp.task('default',['main-bundle','serve','html','indexhtml','htmlutils','jsonhtml','compress','clean-css'])
+gulp.task('default',['main-bundle','serve', 'fonts', 'html','indexhtml','htmlutils','jsonhtml','compress','clean-css'])
 
 
