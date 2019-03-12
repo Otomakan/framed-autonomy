@@ -54,12 +54,10 @@ Don't forget to tell Gulp which template you are using in the JSON file. Here is
 <div class="body-wrapper">
 <div class='container-template'>
 	<div class='page-title'>
-		<div class="image-container image-loader" >
-			<img src="##mainimage##"/>
-		</div>
 		<div class="title-text">
 			<h1 >##title##</h1>
-			<div id='blo'></div><h2 class='page-subtitle'>##subtitle##</h2>
+			<div id='blo'></div>
+			<h2 class='page-subtitle'>##subtitle##</h2>
 		</div>
 
 	</div>
@@ -67,6 +65,19 @@ Don't forget to tell Gulp which template you are using in the JSON file. Here is
 			<p>##content##</p>
 		</div>
 	</div>
+```
+Will generate in src/content
+```
+<div class='body-wrapper'>
+	<div class='container-template'>	
+	<div class='page-title'>
+		<div class='title-text'>			
+			<h1>Template Page</h1>			
+			<div id='blo'></div>
+			<h2 class='page-subtitle'>A Page about templates</h2>		
+			</div>	
+		</div>		
+		<div class='page-content'>			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lore</p>		</div>	</div></div>
 ```
 
 Unfortunately for now you have to write the  nav menu manually in utils/headernav.html. Hopefully you soon won't have to!

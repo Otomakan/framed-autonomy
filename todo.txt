@@ -1,0 +1,4 @@
+Write a script which will call the js associated to the call page at each Ajax
+Make PWA version
+Make integration with firebase to have a more dynamic site
+watch more files (eg: utils/headernav)
