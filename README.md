@@ -5,7 +5,9 @@ Framed is a minimalistic(ish) static website generator written in Node and relyi
 
 ## Why Framed?
 - Minimalistic. Framed is for building quickly fast website 
+
 - Adaptable. The code is not complicated you have full control over your sass, html and content. Framed is for developers who know how to code but don't have time to build.
+
 - Dynamic. Framed can be use to 
 - Static. No or minimal hosting costs for the win!
 
@@ -33,6 +35,7 @@ Gulp has a bunch of watch functions which will update the website when it detect
 ### Customize it 
 
 Write your page templates in src/content/templates and the content of you page in a JSON format in src/content/contentJSON.
+<<<<<<< HEAD
 
 Gulp will read your template file and replace each ##key## in the template by the key provided in the JSON file. 
 
@@ -68,6 +71,3 @@ Don't forget to tell Gulp which template you are using in the JSON file. Here is
 
 Unfortunately for now you have to write the  nav menu manually in utils/headernav.html. Hopefully you soon won't have to!
 
-
-
-The folder structure in contentJSON will become the structure of your website. 
