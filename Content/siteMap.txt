@@ -1,11 +1,14 @@
-Solar{
+Site MAP Autonomy
+
+WHERE TO PUT BATTERIES?
+
+Solar and batteries{
 	Industrial
 	Residential
 	Commercial 
 	Rural
 }
 
-WHERE TO PUT BATTERIES?
 
 Embedded Networks{
 	What it is
@@ -31,9 +34,12 @@ Industries{
 }
 
 Custom Solutions / Free Audit{
+	Advanced OffGrid
 	Free Audit:
 }
 
+Procurement//Rate analysis/negotiation
 About us{
 	
 }
+
