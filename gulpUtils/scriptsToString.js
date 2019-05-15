@@ -11,7 +11,7 @@ function loadBody (cb) {
 	let content = ""
 	//We use the load body script to append to all pages, 
 	// in order to make them Ajax compliant and accessible directly
- 	content = fs.readFileSync('/Users/macuser/Documents/TechDocs/mmp/new_site/yeo/gulpUtils/jsScripts/loadBody.js')
+ 	content = fs.readFileSync('/Users/macuser/Documents/TechDocs/mmp/new_site/framedautonomy/gulpUtils/jsScripts/loadBody.js')
 	//Let's babelify this girl
 	// console.log(content) 
 	content =  babel.transform(content.toString(),{
