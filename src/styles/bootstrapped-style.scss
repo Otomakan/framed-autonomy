@@ -2,12 +2,47 @@
 // @import "node_modules/bootstrap-scss/bootstrap.scss";
 
 @font-face {
-  font-family: NexaBold;
-  src: url('/assets/fonts/nexa-bold.otf');
+  font-family: EvolveSansBoldEvo;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Bold_EVO_(PERSONAL_USE).otf');
 }
 @font-face {
-  font-family: NexaLight;
-  src: url('/assets/fonts/nexa-light.otf');
+  font-family: EvolveSansLightEvo;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Light_EVO_(PERSONAL_USE).otf');
+}
+
+@font-face {
+  font-family: EvolveSansMediumEvo;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Medium_EVO_(PERSONAL_USE).otf');
+}
+@font-face {
+  font-family: EvolveSansBold;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Bold_(PERSONAL_USE).otf');
+}
+@font-face {
+  font-family: EvolveSansLight;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Light_(PERSONAL_USE).otf');
+}
+
+@font-face {
+  font-family: EvolveSansMedium;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Medium_(PERSONAL_USE).otf');
+}
+
+@font-face {
+  font-family: EvolveSansRegularEvo;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Regular_EVO_(PERSONAL_USE).otf');
+}
+@font-face {
+  font-family: EvolveSansThinEvo;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Thin_EVO_(PERSONAL_USE).otf');
+}
+@font-face {
+  font-family: EvolveSansRegular;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Regular_EVO_(PERSONAL_USE).otf');
+}
+@font-face {
+  font-family: EvolveSansThin;
+  src: url('/assets/fonts/MADE_Evolve_Sans_Thin_EVO_(PERSONAL_USE).otf');
 }
 
 div{
@@ -17,6 +52,7 @@ div{
 }
 div,p,ul,li,span{
    font-size: 20px;
+   font-family: EvolveSansRegular;
 }
 
 h2{
@@ -458,6 +494,8 @@ h2{
       }
     }
     .first-block-more-info-container{
+      font-family: EvolveSansMediumEvo;
+      text-transform: uppercase;
       display:inline-block;
       position: absolute;
       z-index: 2;
