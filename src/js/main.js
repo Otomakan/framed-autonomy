@@ -2,7 +2,37 @@ let navBarShow = false
 
 
 ready(function(){
-  let navbarBar = document.getElementsByClassName('navbar')[0]
+  // copyBootstrapNav()
+  nativeNavBar()
+ 
+
+  imageLoader()
+  
+  highlighter()
+})
+
+  function nativeNavBar(){
+    const toggler = document.getElementsByClassName('navbar-toggler')[0]
+    toggler.onclick = (e) =>{
+      document.getElementById('navbar-nav').classList.toggle('visible')
+      e.target.classList.toggle('open')
+    }
+
+    // Here when we click on navitem we want the child dropdown to toggle to visible
+    const navItems =  document.getElementsByClassName("dropdown")
+
+    for(let i=0; i <navItems.length; i++){
+      navItems[i].onclick = (e)=>{
+        for(let ii=0; ii <navItems.length; ii++){
+          navItems[ii].childNodes[1].classList.remove("visible")        
+        }
+        console.log(e.currentTarget.childNodes)
+        e.currentTarget.childNodes[1].classList.add("visible")
+      }
+  }
+  }
+  function copyBootstrapNav(){
+    let navbarBar = document.getElementsByClassName('navbar')[0]
     // navbarBar.style.cssText = "top"+document.getElementById('navigation-bar').getBoundingClientRect().top 'px;'
     navbarBar.style.cssText = "visibility:visible;"
     //Imitate Bootstrap show without important the whole library
@@ -37,8 +67,7 @@ ready(function(){
         navBarNav.classList.remove('show')
       }
     })
-
-    // const navItems = document.getElementsByClassName('menu-nav-link')
+       // const navItems = document.getElementsByClassName('menu-nav-link')
     // for(let i = 0 ; i< navItems.length;i++){
     //   navItems[i].onclick=((e)=>{
     //     e.stopPropagation()
@@ -53,7 +82,7 @@ ready(function(){
       dropDown[i].onclick = (e)=>{
        showDropdownMenu(e)
       }
-      if(window.innerWidth >=760){
+      if(window.innerWidth >=20000){
       // We create these event handlers only if the screen is a certain size
       dropDown[i].onmouseout = (e)=>{
           e.currentTarget.classList.remove('show')
@@ -68,17 +97,27 @@ ready(function(){
       }
     }
   }
-
-  imageLoader()
-  
-})
-
+  }
   function imageLoader() {
     var containers = document.getElementsByClassName('image-loader');
     var containerList = Array.prototype.slice.call(containers);
     containerList.forEach(getImage);
   }
 
+  function highlighter(){
+    window.onscroll = function(e){
+    const tohighlight = document.getElementsByClassName('tohighlight')
+      console.log(e.target)
+      for(let i = 0; i < tohighlight.length; i++){
+        const bounding = tohighlight[i].getBoundingClientRect()
+        console.log(bounding)
+        if (bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
+          tohighlight[i].classList.add('highlighted')
+        }
+      }
+    }
+   
+  }
   // get all images from within 'image-loader' containers
   function getImage(element) {
     var images = element.getElementsByTagName('img');

@@ -22,6 +22,7 @@ function arrowScrollDown(){
     // Smoother scrolling function
     var style = "scrollTop"
     let scrollingElement = document.scrollingElement || document.documentElement
+    const initialPos = scrollingElement.scrollTop || document.body.scrollTop
     var start = new Date().getTime(),
         timer = setInterval(function () {
             var step = Math.min(1, (new Date().getTime()-start) / 1000);
@@ -89,6 +90,8 @@ function openFirstBlock(){
         bodyWrapper.style.left = "0"
         bodyWrapper.style.top = "0"
       },300)
+
+      
       window.setTimeout(()=>{     
          newFirstBlock.style.top = "80px"
         newFirstBlock.style.left = 3+"vw"

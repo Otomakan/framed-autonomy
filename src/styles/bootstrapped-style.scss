@@ -1,5 +1,5 @@
 
-@import "node_modules/bootstrap-scss/bootstrap.scss";
+// @import "node_modules/bootstrap-scss/bootstrap.scss";
 
 @font-face {
   font-family: NexaBold;
@@ -45,6 +45,28 @@ body{
   // padding-top: 56px; 
 }
 
+span{
+  font-size:inherit;
+}
+a{
+  text-decoration:none;
+}
+.tohighlight{
+  transition:   all 1.2s ease-in;
+  background-position: 100% 100%;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right,
+                                       white,
+                                       white 50%,
+                                       transparent 50%,
+                                       transparent);
+  &.highlighted{
+    background-position :0 0;
+  }
+ }
+
+ 
+ 
 @mixin polka-dots($base, $accent, $radial, $size, $position, $attachment) {
   background-color: $base;
   background-image: radial-gradient($accent $radial, transparent $radial);
@@ -84,42 +106,178 @@ body{
 
   /*Navbar*/
 nav{
+  min-height: 70px;
   z-index: 10000;
-}
-.navbar-toggler{
-    margin-right: 0.3em;
-    border: none;
-    background-color: white;
-    background-image: radial-gradient(rgba(0, 0, 0, 1) 20%, transparent 10%);
-    background-size: 16px 12px;
-    background-position: center;
-    /* background-attachment: scroll; */
-    span{
-      background-image:none!important;
+  background-color: rgba(255,255,255,0.95)!important;
+  width:100vw;
+  position: fixed!important;
+   
+  
+  .navbar-utils{
+    height:70px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 30px;
+    .navbar-toggler-container {
+      
+        width: 40px;
+        height: 40px;
+        background: white;
+    
+      .navbar-toggler{
+        $width: 32px;
+        $thickness: 2px;
+        transform: translateY(10px);
+        border: 0;
+        background: none;
+        outline: 0;
+        padding: 0;
+        cursor: pointer;
+    
+        border-bottom: $thickness solid rgb(160,160,160);
+        width: $width;
+        // border-radius: 4px;
+        transition: border-bottom 1s ease-in-out;
+        -webkit-transition: border-bottom 1s ease-in-out; 
+    
+        // Fix for extra space in Firefox
+        &::-moz-focus-inner {
+          border: 0;
+          padding: 0;
+        }	 
+    
+        &:before {
+          content: "";
+          display: block;
+          border-bottom: $thickness solid rgb(160,160,160);
+          border-radius: 4px;
+          width: 100%;
+          margin-bottom: 5px;
+          transition: transform 0.5s ease-in-out;    
+          -webkit-transition: -webkit-transform 0.5s ease-in-out;        
+        }
+    
+        &:after {
+          content: "";
+          display: block;
+          border-bottom: $thickness solid rgb(160,160,160);
+          border-radius: 4px;
+          width: 100%;
+          margin-bottom: 5px;
+          transition: transform 0.5s ease-in-out;
+          -webkit-transition: -webkit-transform 0.5s ease-in-out;
+        }
+    
+        &.open {
+          border-bottom: $thickness solid transparent;
+          transition: border-bottom 0.8s ease-in-out;
+          -webkit-transition: border-bottom 0.8s ease-in-out;
+          transform:  translateX(1px) translateY(6px);
+          &:before {
+            transform: rotate(-405deg) translateY(4px) translateX(-9px);
+            -webkit-transform: rotate(-405deg) translateY(4px) translateX(-9px);      
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+          }
+    
+          &:after {
+            transform: rotate(405deg) translateY(4px) translateX(-1px); 
+            -webkit-transform: rotate(405deg) translateY(4px) translateX(-1px);       
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+          }
+        }
+      }
     }
-}
-.navbar{
-  overflow: visible;
-}
-.navbar-nav{
-  overflow: visible;
-}
-.collapse.navbar-collapse{
-  overflow: visible;
-}
-.navbar-toggler-icon:after,.navbar-toggler-icon:before{
-  display: none;
+    .navbar-brand{
+      img{
+        max-height: 15px;
+      }
+    }
+  }
+  #navbar-nav{
+    display: none;
+    &.visible{
+      display: flex;
+    }
+    height:80vh;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-around;
+    // position:fixed;
+
+    width: fit-content;
+    margin:0 auto;
+    text-decoration:none;
+    font-size:20px;
+
+    .nav-item {
+      color:black;
+      text-decoration:none;
+      margin:10px 0;
+      &::before{
+        content: "";
+        margin-right: 25px;
+        border: 0.5px solid black;
+      }
+    }
+    .nav-item.dropdown{
+
+      cursor: pointer;
+      .dropdown-menu{
+        display:none;
+        visibility: none;
+        opacity:0;
+        height:0;
+        transition:1.1s;
+        display: flex;
+        flex-direction:column;
+        padding:5px 30px;
+        cursor: pointer;
+        &.visible{
+          opacity: 1;
+          visibility: visible;
+          height:auto;
+        }
+        .nav-link.dropdown-item{
+          color:black;
+          &:hover{
+            &::before{
+            content: "";
+            margin-right: 15px;
+            border: 0.5px solid black;
+            }
+          }
+        }
+      }
+       
+    }
+  }
 }
 
-.nav-item.dropdown.show{
-  overflow: visible;
-}
-.dropdownmenu.show{
-  overflow: none
-}
+// .navbar{
+//   overflow: visible;
+// }
+// .navbar-nav{
+//   overflow: visible;
+// }
+// .collapse.navbar-collapse{
+//   overflow: visible;
+// }
+// .navbar-toggler-icon:after,.navbar-toggler-icon:before{
+//   display: none;
+// }
+
+// .nav-item.dropdown.show{
+//   overflow: visible;
+// }
+// .dropdownmenu.show{
+//   overflow: none
+// }
 .dropdown-menu{
   background-color:rgba(255, 255, 255, 0.95) ;
-  @media all and (max-width: 991px){
+  @media all and (max-width: 2000px){
     background-color: rgba(255, 255, 255, 0);
   }
   border-color:transparent;
@@ -127,9 +285,7 @@ nav{
     padding: 0.25rem 1.5rem;
   }
 }
-.nav-link{
-    font-size: 16px;
-}
+
 .bars {
   /*   background-color:pink; */
   position: absolute;
@@ -194,27 +350,21 @@ nav{
 }
 
 
-nav{
-	background-color: rgba(255,255,255,0.95)!important;
-	width:100vw;
-	position: fixed!important;
-	.navbar-brand{
-		img{
-			max-height: 15px;
-		}
-	}
+@font-face{
+  font-family: SourceSansProp;
+  src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap');
 }
 
 
 
 header, footer, article, nav, div {
-  font-family: NexaLight;
+  font-family: SourceSansProp, NexaLight,Helvetica, Arial;
   }
 h1{
-  font-family: NexaBold;
+  font-family: SourceSansProp,NexaBold,Helvetica,Arial;
 }
 h2{
-  font-family: NexaLight;
+  font-family: SourceSansProp,NexaLight,Helvetica, Arial;
 }
 
 // DEAL WITH IMAGES
@@ -253,6 +403,10 @@ h2{
  		transition: width 1s;
     position: relative;
     overflow: hidden;
+    @media screen and (max-width:700px){
+      max-height:200000px;
+      height:auto;
+    }
     .title-container{
       display:inline-block;
       position: absolute;
@@ -263,6 +417,10 @@ h2{
       margin-inline-start: 0px;
       margin-inline-end: 0px;
       margin:4em;
+      @media screen and (max-width:700px){
+        height:auto;
+        margin:2em;
+      }
       @keyframes firstblocktitlereveal{
         from{ transform: translateY(-60px);
               opacity:0;
@@ -270,7 +428,7 @@ h2{
          to{ transform: translateY(0px);
               opacity:1;}
       }
-      h2{
+      h1{
         display:inline-block;
         opacity:0;
         font-size: 3.3em;
@@ -305,6 +463,10 @@ h2{
       z-index: 2;
       bottom:40px;
       height: 150px;
+      @media screen and (max-width:700px){
+        height:auto;
+        // margin:2em;
+      }
           #first-block-more-info {
           animation: ease-out firstblocktitlereveal 0.5s forwards;
           animation-delay:2s;
@@ -353,13 +515,19 @@ h2{
  		display: inline-block;
     
 	 	#second-block{
-      padding: 30px;
 	 		width:40%;
-	 		height:100vh;
 	 		margin:0;
 	 		float: left;
       position: relative;
       background-color: $dark-purple;
+      height:auto;
+      width:100vw;
+      @media screen and (max-width:700px){
+        padding:0;
+      }
+
+      // .second-block-background-container{
+
       #second-block-background{
         background: url('/assets/images/smart_city.svg');
         position:absolute;
@@ -369,9 +537,48 @@ h2{
         background-position: right;
         background-repeat: no-repeat;
         background-size: cover;
-      }
+        z-index:0;
+        }
+      // }
+
       #second-block-text-area{
-        position:absolute;
+        position: relative;
+        display:inline;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding:20px;
+        // width:100%;
+        padding: 50px;
+        h2{
+          margin:20px 50px;
+        
+          @media screen and (max-width:700px){
+            margin:20px 0;
+          }
+          padding:35px 20px;
+        }
+        @media screen and (max-width:700px){
+          padding:0;
+        }
+        .paragraph{
+          margin:30px 50px;
+          background: rgba(255,255,255,0.3);
+        
+          @media screen and (max-width:700px){
+            margin:30px 0;
+          }
+          padding:35px 20px;
+          line-height: 35px;
+          // width:90%;
+          &.white{
+            background:white;
+          }
+          &::before{
+            content: "";
+            margin-right: 25px;
+            border: 1.5px solid black;
+          }
+        }
       }
 	 	}
 
@@ -471,54 +678,63 @@ h2{
         background-position: center;
       }
       #wrapper-second-third{
-        #second-block{
-          background-position: right;
-          background-repeat: no-repeat;
-          width:100vw;
-          max-width:100vw;
-          min-height: 300px;
-          height: 100vh;
-        }
+        // #second-block{
+        //   background-position: right;
+        //   background-repeat: no-repeat;
+        //   width:100vw;
+        //   max-width:100vw;
+        //   min-height: 300px;
+        //   height: 100vh;
+        // }
 
         #third-block{
           width:100vw;
           max-width:100vw;
           min-height: 300px;
-          height: 100vh;
+          // height: 100vh;
+          height:auto;
           background-color: $light-blue;
           position: relative;
             @include polka-dots($light-blue, rgba(255,255,255,0.9), 6%, 35px, center,scroll );
           .white-bar{
-            background-color:white;
-            position: absolute;
-            height:100vh;
-            
-            width:25%;
-            z-index: 1;
+            background-color: white;
+            height: 100vh;
+            width: 25%;
+            z-index: 0;
+            /* white-space: nowrap; */
+            overflow: initial;
+            .content{
+              // position:absolute;
+              // white-space: nowrap;
+              z-index: 2;
+              width: 80vw;
+              height:100%;
+              padding: 4em;
+              h2{
+             
+              margin-top:35px;
+                
+              }
+              h2:before{
+                width: 100px;
+                content: "";
+                position: absolute;
+                top: 70px;
+                left: 4em;
+                border: 1.5px solid black;
+              }
+              .third-block-h2-background{
+                border: none;
+                background-color: $light-blue;
+                left: 25vw;
+                width:75vw;
+                top: 30vh;
+                height:150px;
+                position:absolute;
+              }
+            }
           }
-          h2{
-          margin-left:4em;
-          margin-top:30vh;
-            position:absolute;
-            z-index: 2;
-          }
-          h2:before{
-            width: 100px;
-            content: "";
-            position: absolute;
-            top: -20px;
-            left: 0;
-            border: 1.5px solid black;
-          }
-          .third-block-h2-background{
-            border: none;
-            background-color: $light-blue;
-            left: 25vw;
-            width:75vw;
-            top: 30vh;
-            height:150px;
-            position:absolute;
-          }
+          
         }
       }
     }
@@ -558,7 +774,7 @@ h2{
   right: 10px;
   background-color:white;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);   
-   z-index: 100;
+   z-index: 0;
    cursor: pointer;
    svg{
     margin-top: 20%;

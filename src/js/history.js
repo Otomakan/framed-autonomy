@@ -27,12 +27,12 @@ ready(()=>{
 			e.preventDefault()
 
 			//Visual component, make sure to close the navigation menu if any link is clicked
-			let contentNav = document.getElementById('navbarNavAltMarkup')
-		    let navBarNav = document.getElementsByClassName('navbar-nav')[0]
+			// let contentNav = document.getElementById('navbarNavAltMarkup')
+		    let navBarNav = document.getElementById('navbar-nav')
    
-			contentNav.classList.remove('show')
-        	navBarNav.classList.remove('show')
-        	navBarShow = false
+			// contentNav.classList.remove('show')
+        	navBarNav.classList.toggle('visible')
+        	// navBarShow = false
 			
 			//Push the new state and call the appropriate function
 			history.pushState({page: nextPage}, null, nextPage);
